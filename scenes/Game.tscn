@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjt4ppq3lx7dj"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_34f43"]
+[ext_resource type="PackedScene" uid="uid://dsysrvx0xt55f" path="res://scenes/CollisionShape2DRendered.tscn" id="2_dwj5b"]
+[ext_resource type="PackedScene" uid="uid://dne4582qgwx2l" path="res://scenes/Player.tscn" id="5_xu4y6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7r"]
+size = Vector2(6000, 21)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_34f43")
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(452, 1339)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(1048.5, 0.5)
+shape = SubResource("RectangleShape2D_ajw7r")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2dRendered" parent="Floor/CollisionShape2D" instance=ExtResource("2_dwj5b")]
+metadata/_edit_lock_ = true
+
+[node name="Camera" type="Camera2D" parent="Floor"]
+position = Vector2(1048, -664)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+
+[node name="Player" parent="." instance=ExtResource("5_xu4y6")]

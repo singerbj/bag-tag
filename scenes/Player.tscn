@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dne4582qgwx2l"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ki2ig"]
+[ext_resource type="PackedScene" uid="uid://dsysrvx0xt55f" path="res://scenes/CollisionShape2DRendered.tscn" id="2_my3bc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0f63"]
+size = Vector2(150, 300)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(554, 1256)
+script = ExtResource("1_ki2ig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u0f63")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2dRendered" parent="CollisionShape2D" instance=ExtResource("2_my3bc")]
+color = Color(0, 0.439216, 0.439216, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -63.0
+offset_top = -96.0
+offset_right = 63.0
+offset_bottom = -73.0
+theme_type_variation = &"HeaderLarge"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -309.0
+offset_top = -24.0
+offset_right = -81.0
+offset_bottom = 15.0
+theme_type_variation = &"HeaderLarge"
+text = "DASHDASHDASH"
+horizontal_alignment = 1
+vertical_alignment = 1
