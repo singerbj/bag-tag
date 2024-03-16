@@ -42,7 +42,7 @@ func _process(_delta: float) -> void:
 			#
 		#$Player.position.x = 0
 		
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	for i in range(game_objects.size()-1, -1, -1):
 		if is_instance_valid(game_objects[i]): 
 			var game_object: RigidBody2D = game_objects[i]

@@ -29,16 +29,6 @@ func _on_Area_body_entered(body:Node) -> void:
 func _process(delta):
 	velocity.y += GRAVITY * delta
 		
-	if dash_budget > 0:
-		$Label2.visible = true
-		velocity.x = DASH_FORCE
-		dash_budget -= 1 * delta
-		if dash_budget < 0:
-			dash_budget = 0
-	else:
-		$Label2.visible = false
-		velocity.x = DEFAULT_MOVEMENT_SPEED
-		
 	if jumping:
 		if is_on_floor() && jump_budget == DEFAULT_JUMP_BUDGET:
 			velocity.y = -JUMP_FORCE
@@ -51,7 +41,18 @@ func _process(delta):
 	else:
 		if is_on_floor() && jump_budget < DEFAULT_JUMP_BUDGET:
 			jump_budget = DEFAULT_JUMP_BUDGET
-  
+	
+	if dash_budget > 0:
+		$Label2.visible = true
+		velocity.y = clamp(velocity.y, -INF, 0)
+		velocity.x = DASH_FORCE
+		dash_budget -= 1 * delta
+		if dash_budget < 0:
+			dash_budget = 0
+	else:
+		$Label2.visible = false
+		velocity.x = DEFAULT_MOVEMENT_SPEED
+	
 	move_and_slide()
 	
 	_handle_collisions()
