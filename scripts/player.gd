@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const GameObject = preload("res://scripts/game_object.gd")
+
 const JUMP_FORCE := 1800 #-1500
 const DASH_FORCE := 1300
 const GRAVITY := 2700
@@ -13,8 +15,16 @@ var jump_budget = DEFAULT_JUMP_BUDGET
 var jumping = false
 var dash_budget = 0
 
+class Player:
+	func init():
+		pass
+
 func _ready() -> void:
+	self.connect("body_entered", self._on_Area_body_entered)
 	$Label2.visible = false
+	
+func _on_Area_body_entered(body:Node) -> void:
+	print(body)
 
 func _process(delta):
 	velocity.y += GRAVITY * delta
@@ -44,7 +54,17 @@ func _process(delta):
   
 	move_and_slide()
 	
+	_handle_collisions()
+	
 	$Label.text = str(self.position)
+	
+func _handle_collisions():
+	for index in get_slide_collision_count():
+		var collision := get_slide_collision(index)
+		var body := collision.get_collider()
+		if body is GameObject:
+			print("Collided with: ", body.name)
+			body.queue_free()
 	
 func _input(event):
 	if event is InputEventKey:
@@ -57,7 +77,7 @@ func _input(event):
 			if event is InputEventScreenTouch:
 				_calculate_swipe(event.get_position())
 		
-		if event.is_action_pressed("ui_right"):
+		if event.is_action_pressed("ui_right") && !is_on_floor():
 			dash_budget = DEFAULT_DASH_BUDGET
 			
 	if event is InputEventScreenTouch:
@@ -74,6 +94,7 @@ func _calculate_swipe(swipe_end):
 		var swipe = swipe_end - swipe_start
 		if abs(swipe.x) > MINIMUM_SWIPE_DISTANCE:
 			if swipe.x > 0:
-				dash_budget = DEFAULT_DASH_BUDGET
+				if !is_on_floor():
+					dash_budget = DEFAULT_DASH_BUDGET
 			else:
 				print("swipe left, doesn't do anything")

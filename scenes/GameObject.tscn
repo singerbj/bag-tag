@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d10cjcftt34ca"]
+
+[ext_resource type="Script" path="res://scripts/game_object.gd" id="1_lwwl1"]
+[ext_resource type="PackedScene" uid="uid://dsysrvx0xt55f" path="res://scenes/CollisionShape2DRendered.tscn" id="2_ua6ok"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwmrl"]
+size = Vector2(150, 150)
+
+[node name="GameObject" type="RigidBody2D"]
+script = ExtResource("1_lwwl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jwmrl")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2dRendered" parent="CollisionShape2D" instance=ExtResource("2_ua6ok")]
+color = Color(100, 0, 0, 1)
+metadata/_edit_lock_ = true
