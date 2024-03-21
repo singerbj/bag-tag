@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjt4ppq3lx7dj"]
+[gd_scene load_steps=6 format=3 uid="uid://bjt4ppq3lx7dj"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_34f43"]
 [ext_resource type="PackedScene" uid="uid://bm1moac027y38" path="res://scenes/Collision2DRendered.tscn" id="2_7n24l"]
+[ext_resource type="AudioStream" uid="uid://d2avgh2wvmu0y" path="res://assets/audio/theme.mp3" id="4_opxje"]
 [ext_resource type="PackedScene" uid="uid://dne4582qgwx2l" path="res://scenes/Player.tscn" id="5_xu4y6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7r"]
@@ -29,3 +30,8 @@ position_smoothing_speed = 1.0
 
 [node name="Player" parent="." instance=ExtResource("5_xu4y6")]
 position = Vector2(554, 1121)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_opxje")
+volume_db = -20.0
+autoplay = true

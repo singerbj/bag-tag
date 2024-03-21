@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const GameObject = preload("res://scripts/game_object.gd")
 
-const JUMP_FORCE := 1800 #-1500
+const JUMP_FORCE := 1800
 const DASH_FORCE := 1300
 const GRAVITY := 2700
 const MINIMUM_SWIPE_DISTANCE := 100
@@ -13,6 +13,7 @@ const DEFAULT_MOVEMENT_SPEED := 500
 var swipe_start = null
 var jump_budget = DEFAULT_JUMP_BUDGET
 var jumping = false
+var dash_available = true
 var dash_budget = 0
 
 class Player:
@@ -41,6 +42,7 @@ func _process(delta):
 	else:
 		if is_on_floor() && jump_budget < DEFAULT_JUMP_BUDGET:
 			jump_budget = DEFAULT_JUMP_BUDGET
+			dash_available = true
 	
 	if dash_budget > 0:
 		$Label2.visible = true
@@ -70,7 +72,9 @@ func _handle_collisions():
 func _input(event):
 	if event is InputEventKey:
 		if event.is_action_pressed("ui_up"):
-			if is_on_floor(): jumping = true
+			if is_on_floor():
+				jumping = true
+				$JumpAudioStreamPlayer.playing = true
 			if event is InputEventScreenTouch:
 				swipe_start = event.get_position()
 		if event.is_action_released("ui_up"):
@@ -78,12 +82,16 @@ func _input(event):
 			if event is InputEventScreenTouch:
 				_calculate_swipe(event.get_position())
 		
-		if event.is_action_pressed("ui_right") && !is_on_floor():
+		if event.is_action_pressed("ui_right") && dash_available && !is_on_floor():
 			dash_budget = DEFAULT_DASH_BUDGET
+			$DashAudioStreamPlayer.playing = true
+			dash_available = false
 			
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
-			if is_on_floor(): jumping = true
+			if is_on_floor(): 
+				jumping = true
+				$JumpAudioStreamPlayer.playing = true
 			swipe_start = event.get_position()
 		if event.is_released():	
 			jumping = false
@@ -95,7 +103,9 @@ func _calculate_swipe(swipe_end):
 		var swipe = swipe_end - swipe_start
 		if abs(swipe.x) > MINIMUM_SWIPE_DISTANCE:
 			if swipe.x > 0:
-				if !is_on_floor():
+				if dash_available && !is_on_floor():
 					dash_budget = DEFAULT_DASH_BUDGET
+					$DashAudioStreamPlayer.playing = true
+					dash_available = false
 			else:
 				print("swipe left, doesn't do anything")
