@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dne4582qgwx2l" path="res://scenes/Player.tscn" id="5_xu4y6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7r"]
-size = Vector2(6000, 21)
+size = Vector2(6000, 93)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_34f43")
@@ -16,7 +16,7 @@ metadata/_edit_lock_ = true
 position = Vector2(452, 1339)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(1048.5, 0.5)
+position = Vector2(1048.5, -35.5)
 shape = SubResource("RectangleShape2D_ajw7r")
 metadata/_edit_lock_ = true
 
@@ -29,7 +29,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 
 [node name="Player" parent="." instance=ExtResource("5_xu4y6")]
-position = Vector2(442, 1104)
+position = Vector2(442, 953)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_opxje")

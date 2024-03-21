@@ -30,7 +30,7 @@ texture = ExtResource("6_vq500")
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-68, -112, 27, -242, 80, -240, 117, -222, 123, -187, 50, 13, 85, 55, 74, 125, 66, 235, -91, 235, -92, 45, -102, 13)
+polygon = PackedVector2Array(-68, -112, 27, -242, 80, -240, 117, -222, 123, -187, 50, 13, 85, 55, 74, 125, 70, 218, -89, 218, -92, 45, -102, 13)
 
 [node name="Fire" type="Node2D" parent="."]
 

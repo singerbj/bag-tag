@@ -2,7 +2,14 @@ extends Node2D
 
 
 const Player = preload("res://scripts/player.gd")
-const game_object_scene = preload("res://scenes/GameObject.tscn")
+#const game_object_scene = preload("res://scenes/GameObject.tscn")
+const game_object_scenes = [
+	preload("res://scenes/people/Bina.tscn"),
+	preload("res://scenes/people/Ben.tscn"),
+	preload("res://scenes/people/Dad.tscn"),
+	preload("res://scenes/people/Gigi.tscn"),
+	preload("res://scenes/people/MagJake.tscn"),
+]
 
 const MIN_GAME_OBJECT_SPAWN_DELAY = 2.5
 const MIN_GAME_OBJECT_SPAWN_DISTANCE = 3000
@@ -28,7 +35,7 @@ func _process(_delta: float) -> void:
 	
 	if (current_time - last_game_object_spawn) > MIN_GAME_OBJECT_SPAWN_DELAY:
 		last_game_object_spawn = current_time
-		var new_game_object = game_object_scene.instantiate()
+		var new_game_object = game_object_scenes.pick_random().instantiate()
 		new_game_object.position.x = $Player.position.x + MIN_GAME_OBJECT_SPAWN_DISTANCE + get_game_object_variation_range()
 		new_game_object.position.y = $Player.position.y
 		game_objects.append(new_game_object)

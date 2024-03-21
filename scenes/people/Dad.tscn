@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://voc85itlvnp1"]
+
+[ext_resource type="Script" path="res://scripts/people/bina.gd" id="1_ffc0b"]
+[ext_resource type="Texture2D" uid="uid://cdjuc4h103sls" path="res://assets/art/Dad.PNG" id="2_ke4h7"]
+
+[node name="Dad" type="RigidBody2D"]
+script = ExtResource("1_ffc0b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_ke4h7")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(-54, -1071, 23, -1055, 68, -1027, 96, -992, 116, -951, 134, -857, 118, -746, 96, -621, 212, -584, 256, -552, 269, -495, 250, -249, 216, -55, 258, 428, 261, 854, 262, 926, -268, 932, -245, 225, -210, -73, -238, -208, -322, -185, -370, -217, -566, -194, -720, -189, -750, -301, -694, -324, -695, -372, -553, -345, -377, -381, -293, -524, -240, -595, -154, -630, -192, -765, -201, -923, -168, -1010, -113, -1060)

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ydy7rdw6cdbo"]
+
+[ext_resource type="Script" path="res://scripts/people/bina.gd" id="1_uuxxj"]
+[ext_resource type="Texture2D" uid="uid://db6fsfkejlrwh" path="res://assets/art/MagJake.PNG" id="2_bxyy1"]
+
+[node name="MagJake" type="RigidBody2D"]
+script = ExtResource("1_uuxxj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("2_bxyy1")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.225, 0.225)
+polygon = PackedVector2Array(2, -1060, 37, -1063, 94, -1059, 164, -1047, 206, -1021, 243, -953, 326, -974, 383, -970, 423, -954, 448, -927, 461, -865, 451, -780, 454, -702, 487, -143, 506, -24, 503, 76, 472, 258, 465, 342, 553, 355, 577, 357, 599, 381, 599, 417, 561, 910, 575, 1075, -692, 1075, -748, 345, -689, 239, -656, 161, -623, 158, -545, 201, -508, 197, -405, 223, -302, 240, -284, -108, -276, -225, -301, -396, -291, -465, -257, -517, -299, -685, -304, -792, -266, -804, -227, -811, -192, -837, -158, -879, -131, -934, -98, -990, -57, -1027)
