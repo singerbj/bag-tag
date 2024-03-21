@@ -29,7 +29,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 
 [node name="Player" parent="." instance=ExtResource("5_xu4y6")]
-position = Vector2(554, 1121)
+position = Vector2(442, 1104)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_opxje")

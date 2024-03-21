@@ -22,7 +22,8 @@ class Player:
 
 func _ready() -> void:
 	self.connect("body_entered", self._on_Area_body_entered)
-	$Label2.visible = false
+	$Fire.visible = false
+	$DashSprite.visible = false
 	
 func _on_Area_body_entered(body:Node) -> void:
 	print(body)
@@ -45,21 +46,21 @@ func _process(delta):
 			dash_available = true
 	
 	if dash_budget > 0:
-		$Label2.visible = true
+		$Fire.visible = true
+		$DashSprite.visible = true
 		velocity.y = clamp(velocity.y, -INF, 0)
 		velocity.x = DASH_FORCE
 		dash_budget -= 1 * delta
 		if dash_budget < 0:
 			dash_budget = 0
 	else:
-		$Label2.visible = false
+		$Fire.visible = false
+		$DashSprite.visible = false
 		velocity.x = DEFAULT_MOVEMENT_SPEED
 	
 	move_and_slide()
 	
 	_handle_collisions()
-	
-	$Label.text = str(self.position)
 	
 func _handle_collisions():
 	for index in get_slide_collision_count():
@@ -96,7 +97,6 @@ func _input(event):
 		if event.is_released():	
 			jumping = false
 			_calculate_swipe(event.get_position())
-		
 
 func _calculate_swipe(swipe_end):
 	if swipe_start != null: 
