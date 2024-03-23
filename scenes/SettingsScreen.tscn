@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnr3v8uui8gwm"]
+
+[sub_resource type="Theme" id="Theme_2y1c4"]
+default_font_size = 200
+
+[sub_resource type="Theme" id="Theme_lwxtk"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_sxism"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_5w2xa"]
+default_font_size = 50
+
+[node name="SettingsScreen" type="Panel"]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 3002.0
+offset_bottom = 1352.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1125.0
+offset_top = 481.0
+offset_right = 1926.0
+offset_bottom = 806.0
+theme = SubResource("Theme_2y1c4")
+text = "Settings"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 42.0
+offset_right = 305.0
+offset_bottom = 263.0
+theme = SubResource("Theme_lwxtk")
+text = "Back
+"
+
+[node name="HelpButton" type="Button" parent="."]
+offset_left = 2693.0
+offset_top = 45.0
+offset_right = 2947.0
+offset_bottom = 266.0
+theme = SubResource("Theme_sxism")
+text = "Help
+"
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 39.0
+offset_top = 1078.0
+offset_right = 293.0
+offset_bottom = 1299.0
+theme = SubResource("Theme_5w2xa")
+text = "Exit
+"

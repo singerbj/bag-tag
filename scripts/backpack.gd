@@ -17,6 +17,3 @@ func _ready() -> void:
 		backpackSprite.hide()
 		
 	backpackSprites.pick_random().show()
-
-func _process(delta: float) -> void:
-	pass

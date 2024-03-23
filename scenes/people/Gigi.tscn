@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b68y3d7j3rjyq"]
+[gd_scene load_steps=3 format=3 uid="uid://b68y3d7j3rjyq"]
 
+[ext_resource type="Script" path="res://scripts/people.gd" id="1_0e4ny"]
 [ext_resource type="Texture2D" uid="uid://b3rpi7ad6cs2x" path="res://assets/art/Gigi.PNG" id="2_stprv"]
 
 [node name="Gigi" type="RigidBody2D"]
+script = ExtResource("1_0e4ny")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

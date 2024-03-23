@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=3 uid="uid://42qq4ke7te0s"]
+
+[ext_resource type="Theme" uid="uid://cw2jrsfudbjvg" path="res://default_theme.tres" id="1_clfqb"]
+
+[sub_resource type="Theme" id="Theme_4oq34"]
+default_font_size = 200
+
+[sub_resource type="Theme" id="Theme_nxdrh"]
+default_font_size = 75
+
+[sub_resource type="Theme" id="Theme_1ea38"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_c5gma"]
+default_font_size = 50
+
+[node name="TitleScreen" type="Panel"]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 3002.0
+offset_bottom = 1352.0
+theme = ExtResource("1_clfqb")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 439.0
+offset_right = 1896.0
+offset_bottom = 764.0
+theme = SubResource("Theme_4oq34")
+text = "Bag Tag"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 1189.0
+offset_top = 721.0
+offset_right = 1826.0
+offset_bottom = 1046.0
+theme = SubResource("Theme_nxdrh")
+text = "The Heckin Game"
+
+[node name="StartGameButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 1069.0
+offset_right = 2270.0
+offset_bottom = 1290.0
+theme = SubResource("Theme_1ea38")
+text = "Start Game"
+
+[node name="HelpButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2406.0
+offset_top = 41.0
+offset_right = 2660.0
+offset_bottom = 262.0
+theme = SubResource("Theme_c5gma")
+text = "Help
+"
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 1078.0
+offset_right = 293.0
+offset_bottom = 1299.0
+theme = SubResource("Theme_c5gma")
+text = "Exit
+"
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2704.0
+offset_top = 42.0
+offset_right = 2958.0
+offset_bottom = 263.0
+theme = SubResource("Theme_c5gma")
+text = "Settings
+"
