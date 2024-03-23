@@ -38,6 +38,7 @@ text = "Back
 "
 
 [node name="HelpButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 2693.0
 offset_top = 45.0
 offset_right = 2947.0
@@ -47,6 +48,7 @@ text = "Help
 "
 
 [node name="ExitButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 39.0
 offset_top = 1078.0
 offset_right = 293.0

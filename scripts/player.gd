@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 class_name Player
 
-const GameObject = preload("res://scripts/game_object.gd")
+const People = preload("res://scripts/people.gd")
+const Suitcase = preload("res://scripts/suitcase.gd")
+const Backpack = preload("res://scripts/backpack.gd")
 
 const JUMP_FORCE := 1800
 const DASH_FORCE := 1300
@@ -19,11 +21,13 @@ var dash_available = true
 var dash_budget = 0
 
 @onready var game_scene: Game
+@onready var main_scene: Main
 
 func _ready() -> void:
 	$Fire.visible = false
 	$DashSprite.visible = false
 	game_scene = get_parent()
+	main_scene = get_parent().get_parent().get_parent()
 	
 func _process(delta):
 	if game_scene.current_game_state == game_scene.GameState.Running:
@@ -64,8 +68,17 @@ func _handle_collisions():
 	for index in get_slide_collision_count():
 		var collision := get_slide_collision(index)
 		var body := collision.get_collider()
-		if body is GameObject:
-			print("Collided with: ", body.name)
+		if body is People:
+			print("Collided with People: ", body.name)
+			game_scene.stop_game()
+			main_scene.on_game_over()
+			break
+		elif body is Backpack:
+			print("Collided with Backpack: ", body.name)
+			body.queue_free()
+			break
+		elif body is Suitcase:
+			print("Collided with Suitcase: ", body.name)
 			body.queue_free()
 			break
 	

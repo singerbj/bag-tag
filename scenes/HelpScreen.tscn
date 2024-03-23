@@ -13,6 +13,7 @@ offset_right = 3012.0
 offset_bottom = 1362.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 1355.0
 offset_top = 487.0
 offset_right = 1812.0
@@ -21,6 +22,7 @@ theme = SubResource("Theme_t1ebu")
 text = "Help"
 
 [node name="BackButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 51.0
 offset_top = 42.0
 offset_right = 305.0

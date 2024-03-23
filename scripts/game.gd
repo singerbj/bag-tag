@@ -2,7 +2,6 @@ extends Node2D
 
 class_name Game
 
-const Player = preload("res://scripts/player.gd")
 const game_object_scenes = [
 	preload("res://scenes/people/Bina.tscn"),
 	preload("res://scenes/people/Ben.tscn"),
@@ -98,7 +97,9 @@ func pause_game():
 		
 func stop_game():
 	if current_game_state == GameState.Running || current_game_state == GameState.Paused:
+		get_parent().get_node("CanvasLayer").hide()
 		$AudioStreamPlayer.playing = false
+		camera.enabled = false
 		current_game_state = GameState.Stopped
 	elif current_game_state == GameState.Stopped:
 		print("Error: Cannot stop an already stopped game!")

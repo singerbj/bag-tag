@@ -1,5 +1,6 @@
 extends Node
 
+class_name Main
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,7 +22,8 @@ func _ready() -> void:
 	$HelpScreen/BackButton.connect("pressed", self._on_help_back_button_pressed)
 	
 	$GameScreen/CanvasLayer/SettingsButton.connect("pressed", self._on_game_settings_button_pressed)
-
+	
+	$GameOverScreen/ExitButton.connect("pressed", self._on_exit_button_pressed)
 
 func _on_start_game_button_pressed() -> void:
 	print("_on_start_game_button_pressed")
@@ -57,6 +59,13 @@ func _on_game_settings_button_pressed() -> void:
 	$GameScreen.hide()
 	$GameScreen/Game.pause_game()
 	$SettingsScreen.show()
+	
+func on_game_over() -> void:
+	$TitleScreen.hide()
+	$SettingsScreen.hide()
+	$HelpScreen.hide()
+	$GameScreen.hide()
+	$GameOverScreen.show()
 	
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
