@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddriblw3a6d3v"]
+[gd_scene load_steps=2 format=3 uid="uid://ddriblw3a6d3v"]
 
-[ext_resource type="Script" path="res://scripts/people/bina.gd" id="1_a8rir"]
 [ext_resource type="Texture2D" uid="uid://ckebqrpd33i11" path="res://assets/art/Ben.PNG" id="2_6rxg1"]
 
 [node name="Ben" type="RigidBody2D"]
-script = ExtResource("1_a8rir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)

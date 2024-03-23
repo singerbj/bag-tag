@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvxsovuddt6rm"]
+[gd_scene load_steps=2 format=3 uid="uid://cvxsovuddt6rm"]
 
-[ext_resource type="Script" path="res://scripts/people/bina.gd" id="1_vcb3y"]
 [ext_resource type="Texture2D" uid="uid://dtbnrhywal1a5" path="res://assets/art/Bina.PNG" id="2_pujrv"]
 
 [node name="Bina" type="RigidBody2D"]
-script = ExtResource("1_vcb3y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.225, 0.225)

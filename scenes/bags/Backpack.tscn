@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2yg3nfbrygcw"]
+
+[ext_resource type="Script" path="res://scripts/backpack.gd" id="1_efep3"]
+[ext_resource type="Texture2D" uid="uid://cfoprjoibwu6q" path="res://assets/art/backpacks/Ben.PNG" id="2_oiuxa"]
+[ext_resource type="Texture2D" uid="uid://1t4nk2chsyox" path="res://assets/art/backpacks/Bina.PNG" id="3_y0s0h"]
+[ext_resource type="Texture2D" uid="uid://b4j42pk5mmyn0" path="res://assets/art/backpacks/Dad.PNG" id="4_kd3hg"]
+[ext_resource type="Texture2D" uid="uid://c4lq30qncuvyh" path="res://assets/art/backpacks/Gill.PNG" id="5_sftl4"]
+[ext_resource type="Texture2D" uid="uid://n2ok7oq3mpc2" path="res://assets/art/backpacks/Jake.PNG" id="6_7sc3q"]
+[ext_resource type="Texture2D" uid="uid://b5e7xoo312n1o" path="res://assets/art/backpacks/Mag.PNG" id="7_2busd"]
+[ext_resource type="Texture2D" uid="uid://b66rwaqprdd4b" path="res://assets/art/backpacks/Mom.PNG" id="8_hcn0o"]
+
+[node name="Backpack" type="RigidBody2D"]
+script = ExtResource("1_efep3")
+
+[node name="BackpackSprites" type="Node2D" parent="."]
+position = Vector2(-2, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="BackpackSprite0" type="Sprite2D" parent="BackpackSprites"]
+texture = ExtResource("2_oiuxa")
+metadata/_edit_lock_ = true
+
+[node name="BackpackSprite1" type="Sprite2D" parent="BackpackSprites"]
+position = Vector2(2, 0)
+texture = ExtResource("3_y0s0h")
+metadata/_edit_lock_ = true
+
+[node name="BackpackSprite2" type="Sprite2D" parent="BackpackSprites"]
+position = Vector2(3, -1)
+texture = ExtResource("4_kd3hg")
+metadata/_edit_lock_ = true
+
+[node name="BackpackSprite3" type="Sprite2D" parent="BackpackSprites"]
+position = Vector2(2, -1)
+texture = ExtResource("5_sftl4")
+metadata/_edit_lock_ = true
+
+[node name="BackpackSprite4" type="Sprite2D" parent="BackpackSprites"]
+position = Vector2(2, 0)
+texture = ExtResource("6_7sc3q")
+metadata/_edit_lock_ = true
+
+[node name="BackpackSprite5" type="Sprite2D" parent="BackpackSprites"]
+position = Vector2(2, -1)
+texture = ExtResource("7_2busd")
+metadata/_edit_lock_ = true
+
+[node name="BackpackSprite6" type="Sprite2D" parent="BackpackSprites"]
+position = Vector2(2, 0)
+texture = ExtResource("8_hcn0o")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-1, -192, 32, -190, 45, -174, 62, -139, 89, -139, 112, -129, 131, -89, 147, -23, 150, 1, 164, 22, 180, 74, 180, 107, 174, 142, 153, 163, 140, 182, -138, 182, -149, 157, -174, 141, -178, 108, -167, 50, -143, -2, -138, -41, -128, -91, -107, -125, -79, -135, -53, -140, -43, -176, -30, -191)

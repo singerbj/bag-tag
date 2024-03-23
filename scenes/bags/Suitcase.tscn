@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxfgcdkgg05m3"]
+
+[ext_resource type="Script" path="res://scripts/suitcase.gd" id="1_aeplr"]
+[ext_resource type="Texture2D" uid="uid://b36gt4pyabotw" path="res://assets/art/Bag.PNG" id="1_xnwgk"]
+
+[node name="Suitcase" type="RigidBody2D"]
+center_of_mass_mode = 1
+center_of_mass = Vector2(2.08167e-16, 10)
+script = ExtResource("1_aeplr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_xnwgk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-219, 0)
+scale = Vector2(0.25, 0.25)
+polygon = PackedVector2Array(644, 40, 584, 68, 576, 232, 580, 728, 584, 800, 1220, 804, 1264, 200, 1240, 156, 1176, 132, 1140, 128, 1176, -484, 1148, -504, 1024, -444, 992, 100)

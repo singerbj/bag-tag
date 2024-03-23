@@ -1,10 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://voc85itlvnp1"]
+[gd_scene load_steps=2 format=3 uid="uid://voc85itlvnp1"]
 
-[ext_resource type="Script" path="res://scripts/people/bina.gd" id="1_ffc0b"]
 [ext_resource type="Texture2D" uid="uid://cdjuc4h103sls" path="res://assets/art/Dad.PNG" id="2_ke4h7"]
 
 [node name="Dad" type="RigidBody2D"]
-script = ExtResource("1_ffc0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
