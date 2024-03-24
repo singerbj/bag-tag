@@ -20,10 +20,10 @@ offset_bottom = 1352.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1125.0
-offset_top = 481.0
-offset_right = 1926.0
-offset_bottom = 806.0
+offset_left = 1119.0
+offset_top = 119.0
+offset_right = 1920.0
+offset_bottom = 444.0
 theme = SubResource("Theme_2y1c4")
 text = "Settings"
 
@@ -56,3 +56,11 @@ offset_bottom = 1299.0
 theme = SubResource("Theme_5w2xa")
 text = "Exit
 "
+
+[node name="FullscreenButton" type="Button" parent="."]
+offset_left = 1281.0
+offset_top = 620.0
+offset_right = 1711.0
+offset_bottom = 841.0
+theme = SubResource("Theme_lwxtk")
+text = "Fullscreen"

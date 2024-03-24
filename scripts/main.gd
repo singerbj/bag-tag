@@ -22,10 +22,12 @@ func _ready() -> void:
 	$TitleScreen/SettingsButton.connect("pressed", self._on_settings_button_pressed)
 	$TitleScreen/HelpButton.connect("pressed", self._on_help_button_pressed)
 	$TitleScreen/ExitButton.connect("pressed", self._on_exit_button_pressed)
+	$TitleScreen/FullscreenButton.connect("pressed", self._on_fullscreen_button_pressed)
 	
 	$SettingsScreen/BackButton.connect("pressed", self._on_settings_back_button_pressed)
 	$SettingsScreen/HelpButton.connect("pressed", self._on_help_button_pressed)
 	$SettingsScreen/ExitButton.connect("pressed", self._on_exit_button_pressed)
+	$SettingsScreen/FullscreenButton.connect("pressed", self._on_fullscreen_button_pressed)
 	
 	$HelpScreen/BackButton.connect("pressed", self._on_help_back_button_pressed)
 	
@@ -33,6 +35,10 @@ func _ready() -> void:
 	
 	$GameOverScreen/ExitButton.connect("pressed", self._on_exit_button_pressed)
 	$GameOverScreen/PlayAgainButton.connect("pressed", self._on_play_again_pressed)
+
+#func _unhandled_input(event: InputEvent) -> void:
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 func _on_start_game_button_pressed() -> void:
 	print("_on_start_game_button_pressed")
@@ -51,6 +57,14 @@ func _on_settings_button_pressed() -> void:
 func _on_exit_button_pressed() -> void:
 	print("_on_exit_button_pressed")
 	get_tree().quit()
+
+func _on_fullscreen_button_pressed() -> void:
+	print("_on_fullscreen_button_pressed")
+	
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	
 func _on_settings_back_button_pressed() -> void:
 	print("_on_settings_back_button_pressed")
