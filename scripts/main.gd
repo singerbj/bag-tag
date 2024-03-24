@@ -2,12 +2,20 @@ extends Node
 
 class_name Main
 
+@onready var GameScreenScene = preload("res://scenes/GameScreen.tscn")
+
+var game_screen_scene: Node
+var game_scene: Node
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	game_screen_scene = get_node("GameScreen")
+	game_scene = game_screen_scene.get_node("Game")
+	
 	$TitleScreen.show()
 	$SettingsScreen.hide()
 	$HelpScreen.hide()
-	$GameScreen.hide()
+	game_screen_scene.hide()
 	$GameOverScreen.hide()
 	
 	$TitleScreen/StartGameButton.connect("pressed", self._on_start_game_button_pressed)
@@ -21,15 +29,16 @@ func _ready() -> void:
 	
 	$HelpScreen/BackButton.connect("pressed", self._on_help_back_button_pressed)
 	
-	$GameScreen/CanvasLayer/SettingsButton.connect("pressed", self._on_game_settings_button_pressed)
+	game_screen_scene.get_node("CanvasLayer/SettingsButton").connect("pressed", self._on_game_settings_button_pressed)
 	
 	$GameOverScreen/ExitButton.connect("pressed", self._on_exit_button_pressed)
+	$GameOverScreen/PlayAgainButton.connect("pressed", self._on_play_again_pressed)
 
 func _on_start_game_button_pressed() -> void:
 	print("_on_start_game_button_pressed")
 	$TitleScreen.hide()
-	$GameScreen.show()
-	$GameScreen/Game.start_game()
+	game_screen_scene.show()
+	game_scene.start_game()
 	
 func _on_help_button_pressed() -> void:
 	print("_on_help_button_pressed")
@@ -47,8 +56,8 @@ func _on_settings_back_button_pressed() -> void:
 	print("_on_settings_back_button_pressed")
 	$SettingsScreen.hide()
 	if !$TitleScreen.visible:
-		$GameScreen.show()
-		$GameScreen/Game.start_game()
+		game_screen_scene.show()
+		game_scene.start_game()
 	
 func _on_help_back_button_pressed() -> void:
 	print("_on_help_back_button_pressed")
@@ -56,17 +65,26 @@ func _on_help_back_button_pressed() -> void:
 
 func _on_game_settings_button_pressed() -> void:
 	print("_on_game_settings_button_pressed")
-	$GameScreen.hide()
-	$GameScreen/Game.pause_game()
+	game_screen_scene.hide()
+	game_scene.pause_game()
 	$SettingsScreen.show()
+	
+func _on_play_again_pressed() -> void:
+	game_screen_scene.queue_free()
+	game_screen_scene = GameScreenScene.instantiate()
+	game_scene = game_screen_scene.get_node("Game")
+	game_screen_scene.get_node("CanvasLayer/SettingsButton").connect("pressed", self._on_game_settings_button_pressed)
+	add_child(game_screen_scene)
+	
+	$TitleScreen.show()
+	$SettingsScreen.hide()
+	$HelpScreen.hide()
+	game_screen_scene.hide()
+	$GameOverScreen.hide()
 	
 func on_game_over() -> void:
 	$TitleScreen.hide()
 	$SettingsScreen.hide()
 	$HelpScreen.hide()
-	$GameScreen.hide()
+	game_screen_scene.hide()
 	$GameOverScreen.show()
-	
-func wait(seconds: float) -> void:
-	await get_tree().create_timer(seconds).timeout
-

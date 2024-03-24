@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgdxjiqlqtl8g"]
+[gd_scene load_steps=4 format=3 uid="uid://bgdxjiqlqtl8g"]
 
 [sub_resource type="Theme" id="Theme_5ghd4"]
 default_font_size = 200
 
 [sub_resource type="Theme" id="Theme_sio8u"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_bbmqs"]
 default_font_size = 50
 
 [node name="GameOverScreen" type="Panel"]
@@ -27,4 +30,13 @@ offset_right = 293.0
 offset_bottom = 1299.0
 theme = SubResource("Theme_sio8u")
 text = "Exit
+"
+
+[node name="PlayAgainButton" type="Button" parent="."]
+offset_left = 739.0
+offset_top = 1060.0
+offset_right = 2270.0
+offset_bottom = 1281.0
+theme = SubResource("Theme_bbmqs")
+text = "Play Again
 "
