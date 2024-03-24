@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm1moac027y38"]
-
-[ext_resource type="Script" path="res://scripts/collision2DRendered.gd" id="1_hhcug"]
-
-[node name="Collision2dRendered" type="Node2D"]
-script = ExtResource("1_hhcug")
