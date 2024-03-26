@@ -13,13 +13,15 @@ const game_object_scenes = [
 ]
 
 const MIN_GAME_OBJECT_SPAWN_DELAY = 2.5
-const MIN_GAME_OBJECT_SPAWN_DISTANCE = 3000
-const GAME_OBJECT_VARIATION_RANGE = 1500
+const MIN_GAME_OBJECT_SPAWN_DISTANCE = 2500
+const MIN_GAME_OBJECT_VARIATION_RANGE = 1000
+const MAX_GAME_OBJECT_VARIATION_RANGE = 1000
 const MIN_GAME_OBJECT_DELETE_DISTANCE = 2000
 const RESET_POSITION_INTERVAL = 5
 
 var last_position_reset = 0
-var last_game_object_spawn = 0
+var last_game_object_spawn_time = 0
+var last_game_object = 0
 
 var game_objects = []
 
@@ -40,13 +42,22 @@ func _process(_delta: float) -> void:
 		var current_time = Time.get_unix_time_from_system()
 		$Floor.position.x = $Player.position.x
 		
-		if (current_time - last_game_object_spawn) > MIN_GAME_OBJECT_SPAWN_DELAY:
-			last_game_object_spawn = current_time
-			var new_game_object = game_object_scenes.pick_random().instantiate()
+		if (current_time - last_game_object_spawn_time) > MIN_GAME_OBJECT_SPAWN_DELAY:
+			last_game_object_spawn_time = current_time
+			var new_last_game_object = _get_random_game_object_index()
+			while new_last_game_object == last_game_object:
+				new_last_game_object = _get_random_game_object_index()
+			last_game_object = new_last_game_object
+			
+			var new_game_object: RigidBody2D = game_object_scenes[last_game_object].instantiate()
 			new_game_object.position.x = $Player.position.x + MIN_GAME_OBJECT_SPAWN_DISTANCE + _get_game_object_variation_range()
 			new_game_object.position.y = $Player.position.y
 			game_objects.append(new_game_object)
 			add_child(new_game_object)
+			if _should_apply_random_rotation():
+				new_game_object.inertia = 100
+				new_game_object.apply_torque_impulse(_get_random_force())
+				new_game_object.inertia = 0
 		
 func _physics_process(_delta: float) -> void:
 	if current_game_state == GameState.Running:
@@ -59,10 +70,25 @@ func _physics_process(_delta: float) -> void:
 			else:
 				game_objects.remove_at(i)
 		
+func _get_random_game_object_index():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	return rng.randi_range(0, game_object_scenes.size() - 1)
+
 func _get_game_object_variation_range():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	return rng.randi_range(0, GAME_OBJECT_VARIATION_RANGE)
+	return rng.randi_range(MIN_GAME_OBJECT_VARIATION_RANGE, MAX_GAME_OBJECT_VARIATION_RANGE)
+	
+func _should_apply_random_rotation():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	return rng.randi_range(0, 100) > 95
+
+func _get_random_force():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	return 200 if rng.randi_range(0, 1) > 0 else -200
 
 func _input(event):
 	if current_game_state == GameState.Running:
