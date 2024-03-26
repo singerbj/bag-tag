@@ -76,10 +76,12 @@ func _handle_collisions():
 		elif body is Backpack:
 			print("Collided with Backpack: ", body.name)
 			body.queue_free()
+			game_scene.points += 1
 			break
 		elif body is Suitcase:
 			print("Collided with Suitcase: ", body.name)
 			body.queue_free()
+			game_scene.points += 1
 			break
 	
 func _unhandled_input(event):

@@ -18,10 +18,12 @@ const MIN_GAME_OBJECT_VARIATION_RANGE = 1000
 const MAX_GAME_OBJECT_VARIATION_RANGE = 1000
 const MIN_GAME_OBJECT_DELETE_DISTANCE = 2000
 const RESET_POSITION_INTERVAL = 5
+const POINT_DISTANCE_BUFFER = 500
 
 var last_position_reset = 0
 var last_game_object_spawn_time = 0
 var last_game_object = 0
+var points = 0
 
 var game_objects = []
 
@@ -58,12 +60,18 @@ func _process(_delta: float) -> void:
 				new_game_object.inertia = 100
 				new_game_object.apply_torque_impulse(_get_random_force())
 				new_game_object.inertia = 0
+				
+	get_parent().get_node("CanvasLayer/ScoreLabel").text = str(points) + " points"
 		
 func _physics_process(_delta: float) -> void:
 	if current_game_state == GameState.Running:
 		for i in range(game_objects.size()-1, -1, -1):
 			if is_instance_valid(game_objects[i]): 
 				var game_object: RigidBody2D = game_objects[i]
+				if !(game_object is Backpack or game_object is Suitcase) && !game_object.point_counted && game_object.position.x < ($Player.position.x - POINT_DISTANCE_BUFFER):
+					points += 1
+					game_object.point_counted = true
+				
 				if ($Player.position.x - game_object.position.x) > MIN_GAME_OBJECT_DELETE_DISTANCE:
 					game_object.queue_free()
 					game_objects.remove_at(i)
