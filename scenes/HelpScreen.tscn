@@ -14,10 +14,10 @@ offset_bottom = 1362.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1355.0
-offset_top = 487.0
-offset_right = 1812.0
-offset_bottom = 812.0
+offset_left = 1283.0
+offset_top = 55.0
+offset_right = 1740.0
+offset_bottom = 380.0
 theme = SubResource("Theme_t1ebu")
 text = "Help"
 
@@ -30,3 +30,19 @@ offset_bottom = 263.0
 theme = SubResource("Theme_gemsm")
 text = "Back
 "
+
+[node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
+offset_left = 590.0
+offset_top = 389.0
+offset_right = 2427.0
+offset_bottom = 1163.0
+theme = SubResource("Theme_t1ebu")
+theme_override_font_sizes/normal_font_size = 60
+text = "How to Play:
+1. Tag those bags!
+2. Avoid squishing your family!
+3. Keep on going!
+
+Mobile Controls: Tap to Jump and Swipe Right to Dash
+
+Keyboard Controls: Up Arrow to Jump and Right Arrow to Dash"

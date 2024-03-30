@@ -40,3 +40,11 @@ offset_bottom = 1281.0
 theme = SubResource("Theme_bbmqs")
 text = "Play Again
 "
+
+[node name="ScoreLabel" type="RichTextLabel" parent="."]
+offset_left = 1258.0
+offset_top = 560.0
+offset_right = 1798.0
+offset_bottom = 885.0
+theme = SubResource("Theme_5ghd4")
+theme_override_font_sizes/normal_font_size = 120

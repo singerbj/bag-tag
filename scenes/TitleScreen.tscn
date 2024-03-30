@@ -44,10 +44,10 @@ text = "The Heckin Game"
 
 [node name="StartGameButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 739.0
-offset_top = 1069.0
-offset_right = 2270.0
-offset_bottom = 1290.0
+offset_left = 879.0
+offset_top = 1066.0
+offset_right = 2129.0
+offset_bottom = 1287.0
 theme = SubResource("Theme_1ea38")
 text = "Start Game"
 

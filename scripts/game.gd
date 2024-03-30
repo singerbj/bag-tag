@@ -23,6 +23,7 @@ const POINT_DISTANCE_BUFFER = 500
 var last_position_reset = 0
 var last_game_object_spawn_time = 0
 var last_game_object = 0
+var last_pause = 0
 var points = 0
 
 var game_objects = []
@@ -40,8 +41,18 @@ func _ready() -> void:
 	get_parent().get_node("CanvasLayer").hide()
 
 func _process(_delta: float) -> void:
-	if current_game_state == GameState.Running:
-		var current_time = Time.get_unix_time_from_system()
+	var current_time = Time.get_unix_time_from_system()
+	if current_game_state == GameState.Paused:
+		if last_pause == 0:
+			last_pause = current_time
+	elif current_game_state == GameState.Running:
+		if last_pause != 0:
+			var offset = current_time - last_pause
+			last_position_reset += offset
+			last_game_object_spawn_time += offset
+			last_game_object += offset
+			last_pause = 0
+			
 		$Floor.position.x = $Player.position.x
 		
 		if (current_time - last_game_object_spawn_time) > MIN_GAME_OBJECT_SPAWN_DELAY:
@@ -61,7 +72,7 @@ func _process(_delta: float) -> void:
 				new_game_object.apply_torque_impulse(_get_random_force())
 				new_game_object.inertia = 0
 				
-	get_parent().get_node("CanvasLayer/ScoreLabel").text = str(points) + " points"
+	get_parent().get_node("CanvasLayer/ScoreLabel").text = str(points)  + (" point" if points == 1 else " points")
 		
 func _physics_process(_delta: float) -> void:
 	if current_game_state == GameState.Running:

@@ -13,12 +13,14 @@ const MINIMUM_SWIPE_DISTANCE := 100
 const DEFAULT_JUMP_BUDGET := 0.1
 const DEFAULT_DASH_BUDGET := 0.5
 const DEFAULT_MOVEMENT_SPEED := 500
+const SPEED_MULTIPLIER_INCREMENT = 0.00001
 
 var swipe_start = null
 var jump_budget = DEFAULT_JUMP_BUDGET
 var jumping = false
 var dash_available = true
 var dash_budget = 0
+var speed_multiplier = 1.0
 
 @onready var game_scene: Game
 @onready var main_scene: Main
@@ -31,6 +33,8 @@ func _ready() -> void:
 	
 func _process(delta):
 	if game_scene.current_game_state == game_scene.GameState.Running:
+		speed_multiplier += SPEED_MULTIPLIER_INCREMENT
+		
 		velocity.y += GRAVITY * delta
 			
 		if jumping:
@@ -51,14 +55,14 @@ func _process(delta):
 			$Fire.visible = true
 			$DashSprite.visible = true
 			velocity.y = clamp(velocity.y, -INF, 0)
-			velocity.x = DASH_FORCE
+			velocity.x = DASH_FORCE * speed_multiplier
 			dash_budget -= 1 * delta
 			if dash_budget < 0:
 				dash_budget = 0
 		else:
 			$Fire.visible = false
 			$DashSprite.visible = false
-			velocity.x = DEFAULT_MOVEMENT_SPEED
+			velocity.x = DEFAULT_MOVEMENT_SPEED * speed_multiplier
 		
 		move_and_slide()
 		
@@ -71,7 +75,7 @@ func _handle_collisions():
 		if body is People:
 			print("Collided with People: ", body.name)
 			game_scene.stop_game()
-			main_scene.on_game_over()
+			main_scene.on_game_over(get_parent().points)
 			break
 		elif body is Backpack:
 			print("Collided with Backpack: ", body.name)

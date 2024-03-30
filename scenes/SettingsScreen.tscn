@@ -58,9 +58,28 @@ text = "Exit
 "
 
 [node name="FullscreenButton" type="Button" parent="."]
-offset_left = 1281.0
-offset_top = 620.0
-offset_right = 1711.0
-offset_bottom = 841.0
+offset_left = 1270.0
+offset_top = 917.0
+offset_right = 1700.0
+offset_bottom = 1138.0
 theme = SubResource("Theme_lwxtk")
 text = "Fullscreen"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 1367.0
+offset_top = 564.0
+offset_right = 2168.0
+offset_bottom = 889.0
+theme = SubResource("Theme_2y1c4")
+theme_override_font_sizes/normal_font_size = 60
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 1020.0
+offset_top = 646.0
+offset_right = 1939.0
+offset_bottom = 795.0
+max_value = 10.0
+value = 10.0
+tick_count = 11
