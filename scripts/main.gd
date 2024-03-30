@@ -4,6 +4,7 @@ class_name Main
 
 @onready var GameScreenScene = preload("res://scenes/GameScreen.tscn")
 
+const SETTINGS_FILE_PATH = "user://settings.cfg"
 const BKRD_MUSIC_DEFAULT_DB = -20
 const JUMP_DEFAULT_DB = -20
 const DASH_DEFAULT_DB = -12
@@ -14,18 +15,23 @@ var game_scene: Node
 var background_music_player: Node
 var jump_player: Node
 var dash_player: Node
+var config = ConfigFile.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var err = config.load(SETTINGS_FILE_PATH)
+	if err != OK:
+		config.set_value("main", "volume", 10.0)
+		
 	game_screen_scene = get_node("GameScreen")
 	game_scene = game_screen_scene.get_node("Game")
 	background_music_player = game_scene.get_node('AudioStreamPlayer')
 	jump_player = game_scene.get_node('Player').get_node('JumpAudioStreamPlayer')
 	dash_player = game_scene.get_node('Player').get_node('DashAudioStreamPlayer')
 	
-	background_music_player.volume_db = BKRD_MUSIC_DEFAULT_DB
-	jump_player.volume_db = JUMP_DEFAULT_DB
-	dash_player.volume_db = DASH_DEFAULT_DB
+	var volume = config.get_value("main", "volume")
+	$SettingsScreen/VolumeSlider.value = volume
+	_set_volume(volume)
 	
 	$TitleScreen.show()
 	$SettingsScreen.hide()
@@ -83,6 +89,11 @@ func _on_fullscreen_button_pressed() -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	
 func _on_volume_changed(value: float) -> void:
+	_set_volume(value)
+	
+func _set_volume(value: float) -> void:
+	config.set_value("main", "volume", value)
+	config.save(SETTINGS_FILE_PATH)	
 	background_music_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(BKRD_MUSIC_DEFAULT_DB)))
 	jump_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(JUMP_DEFAULT_DB)))
 	dash_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(DASH_DEFAULT_DB)))

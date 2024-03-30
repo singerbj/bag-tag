@@ -121,7 +121,8 @@ func _input(event):
 func start_game():
 	if current_game_state == GameState.Paused:
 		get_parent().get_node("CanvasLayer").show()
-		$AudioStreamPlayer.playing = true
+		if !$AudioStreamPlayer.playing:
+			$AudioStreamPlayer.playing = true
 		camera.enabled = true
 		current_game_state = GameState.Running
 	elif current_game_state == GameState.Stopped:
@@ -134,7 +135,7 @@ func pause_game():
 		print("Error: Cannot pause an already paused game!")
 	elif current_game_state == GameState.Running:
 		get_parent().get_node("CanvasLayer").hide()
-		$AudioStreamPlayer.playing = false
+		#$AudioStreamPlayer.playing = false
 		camera.enabled = false
 		current_game_state = GameState.Paused
 	elif current_game_state == GameState.Stopped:
