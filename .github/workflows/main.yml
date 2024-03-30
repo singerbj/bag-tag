@@ -138,7 +138,7 @@ jobs:
         run: |
           mkdir -v -p build/android
           cd $PROJECT_PATH
-          godot --headless --verbose --export-release "Android" ./build/android/$EXPORT_NAME
+          godot --headless --verbose --export-release "Android" ./build/android/$EXPORT_NAME.apk
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
