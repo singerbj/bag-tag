@@ -120,7 +120,7 @@ jobs:
           name: mac
           path: build/mac
 
-  export-linux:
+  export-android:
     name: Android Export
     runs-on: ubuntu-20.04
     container:
