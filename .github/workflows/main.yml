@@ -119,3 +119,28 @@ jobs:
         with:
           name: mac
           path: build/mac
+
+  export-linux:
+    name: Android Export
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
+      - name: Android Build
+        run: |
+          mkdir -v -p build/android
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Android" ./build/android/$EXPORT_NAME
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: android
+          path: build/android
