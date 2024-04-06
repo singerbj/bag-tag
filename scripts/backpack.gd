@@ -2,8 +2,10 @@ extends GameObject
 
 class_name Backpack
 
+var backpackSprites
+
 func _ready() -> void:
-	var backpackSprites = [
+	backpackSprites = [
 		$BackpackSprites/BackpackSprite0,
 		$BackpackSprites/BackpackSprite1,
 		$BackpackSprites/BackpackSprite2,
@@ -17,3 +19,9 @@ func _ready() -> void:
 		backpackSprite.hide()
 		
 	backpackSprites.pick_random().show()
+	
+func _process(delta: float) -> void:
+	if impulse_applied:
+		$CollisionPolygon2D.disabled = true
+		for backpackSprite in backpackSprites:
+			backpackSprite.modulate.a -= (1 * delta)

@@ -21,6 +21,7 @@ var jumping = false
 var dash_available = true
 var dash_budget = 0
 var speed_multiplier = 1.0
+var hit_people = false
 
 @onready var game_scene: Game
 @onready var main_scene: Main
@@ -64,32 +65,62 @@ func _process(delta):
 			$DashSprite.visible = false
 			velocity.x = DEFAULT_MOVEMENT_SPEED * speed_multiplier
 		
-		move_and_slide()
+		if !hit_people:
+			move_and_slide()
 		
 		_handle_collisions()
 	
 func _handle_collisions():
 	for index in get_slide_collision_count():
 		var collision := get_slide_collision(index)
-		var body := collision.get_collider()
-		if body is People:
-			print("Collided with People: ", body.name)
-			$GameOverAudioStreamPlayer.playing = true
-			game_scene.stop_game()
-			main_scene.on_game_over(get_parent().points)
+		var game_object := collision.get_collider()
+		if game_object is People:
+			print("Collided with People: ", game_object.name)
+			hit_people = true
+			$DashSprite.visible = true
+			game_scene.get_node("MusicAudioStreamPlayer").playing = false
+			_smack_game_object(game_object, 3, func():
+				$GameOverAudioStreamPlayer.playing = true
+				game_scene.stop_game()
+				main_scene.on_game_over(get_parent().points)
+			)
 			break
-		elif body is Backpack:
-			print("Collided with Backpack: ", body.name)
-			$TagAudioStreamPlayer.playing = true
-			body.queue_free()
-			game_scene.points += 1
+		elif game_object is Backpack:
+			print("Collided with Backpack: ", game_object.name)
+			if(!game_object.impulse_applied):
+				$TagAudioStreamPlayer.playing = true
+			if(!game_object.point_counted):
+				game_scene.points += 1
+			_smack_game_object(game_object, 2)
 			break
-		elif body is Suitcase:
-			print("Collided with Suitcase: ", body.name)
-			$TagAudioStreamPlayer.playing = true
-			body.queue_free()
-			game_scene.points += 1
+		elif game_object is Suitcase:
+			print("Collided with Suitcase: ", game_object.name)
+			if(!game_object.impulse_applied):
+				$TagAudioStreamPlayer.playing = true
+			if(!game_object.point_counted):
+				game_scene.points += 1
+			_smack_game_object(game_object, 2)
 			break
+
+func _get_random_force(min: int, max: int):
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	return rng.randi_range(min, max)
+
+func _smack_game_object(game_object: GameObject, wait_time: int, callback: Callable = func():):
+	if(!game_object.impulse_applied):
+		game_object.impulse_applied = true
+		game_object.apply_impulse(Vector2(_get_random_force(1000, 1100), _get_random_force(-1100, -1000)), Vector2(-100, 100))
+	
+	var timer := Timer.new()
+	game_object.add_child(timer)
+	timer.wait_time = wait_time
+	timer.one_shot = true
+	timer.connect("timeout", func(): 
+		timer.get_parent().queue_free()
+		callback.call()
+	)
+	timer.start()
 	
 func _unhandled_input(event):
 	if game_scene.current_game_state == game_scene.GameState.Running:
@@ -144,9 +175,5 @@ func _show_flames():
 	add_child(timer)
 	timer.wait_time = 0.15
 	timer.one_shot = true
-	timer.connect("timeout", _on_flames_timer_timeout)
+	timer.connect("timeout", func(): $Fire/Flames2.visible = true)
 	timer.start()
-
-func _on_flames_timer_timeout() -> void:
-	$Fire/Flames2.visible = true
-
