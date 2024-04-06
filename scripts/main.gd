@@ -33,6 +33,12 @@ func _ready() -> void:
 	$SettingsScreen/VolumeSlider.value = volume
 	_set_volume(volume)
 	
+	if OS.has_feature("web"):
+		$TitleScreen/ExitButton.hide()
+		$SettingsScreen/ExitButton.hide()
+		$GameOverScreen/ExitButton.hide()
+	
+	
 	$TitleScreen.show()
 	$SettingsScreen.hide()
 	$HelpScreen.hide()

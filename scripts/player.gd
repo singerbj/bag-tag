@@ -26,7 +26,7 @@ var speed_multiplier = 1.0
 @onready var main_scene: Main
 
 func _ready() -> void:
-	$Fire.visible = false
+	_hide_flames()
 	$DashSprite.visible = false
 	game_scene = get_parent()
 	main_scene = get_parent().get_parent().get_parent()
@@ -52,7 +52,7 @@ func _process(delta):
 				dash_available = true
 		
 		if dash_budget > 0:
-			$Fire.visible = true
+			_show_flames()
 			$DashSprite.visible = true
 			velocity.y = clamp(velocity.y, -INF, 0)
 			velocity.x = DASH_FORCE * speed_multiplier
@@ -60,7 +60,7 @@ func _process(delta):
 			if dash_budget < 0:
 				dash_budget = 0
 		else:
-			$Fire.visible = false
+			_hide_flames()
 			$DashSprite.visible = false
 			velocity.x = DEFAULT_MOVEMENT_SPEED * speed_multiplier
 		
@@ -128,3 +128,22 @@ func _calculate_swipe(swipe_end):
 					dash_available = false
 			else:
 				print("swipe left, doesn't do anything")
+				
+func _hide_flames():
+	$Fire.visible = false
+	$Fire/Flames1.visible = false
+	$Fire/Flames2.visible = false
+				
+func _show_flames():
+	$Fire.visible = true
+	$Fire/Flames1.visible = true
+	var timer := Timer.new()
+	add_child(timer)
+	timer.wait_time = 0.15
+	timer.one_shot = true
+	timer.connect("timeout", _on_flames_timer_timeout)
+	timer.start()
+
+func _on_flames_timer_timeout() -> void:
+	$Fire/Flames2.visible = true
+
