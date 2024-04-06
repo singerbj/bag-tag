@@ -77,6 +77,8 @@ func _handle_collisions():
 		var game_object := collision.get_collider()
 		if game_object is People:
 			print("Collided with People: ", game_object.name)
+			if !hit_people && !$GaspAudioStreamPlayer.playing:
+				$GaspAudioStreamPlayer.playing = true
 			hit_people = true
 			$DashSprite.visible = true
 			game_scene.get_node("MusicAudioStreamPlayer").playing = false

@@ -11,6 +11,7 @@ const JUMP_DEFAULT_DB = -20
 const DASH_DEFAULT_DB = -12
 const TAG_DEFAULT_DB = -6
 const GAME_OVER_DEFAULT_DB = -6
+const GASP_DEFAULT_DB = -6
 const MIN_DB = -60
 
 var game_screen_scene: Node
@@ -22,6 +23,7 @@ var jump_player: Node
 var dash_player: Node
 var tag_player: Node
 var game_over_player: Node
+var gasp_player: Node
 var config = ConfigFile.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +41,7 @@ func _ready() -> void:
 	dash_player = player_scene.get_node('DashAudioStreamPlayer')
 	tag_player = player_scene.get_node('TagAudioStreamPlayer')
 	game_over_player = player_scene.get_node('GameOverAudioStreamPlayer')
+	gasp_player = player_scene.get_node('GaspAudioStreamPlayer')
 	
 	var volume = config.get_value("main", "volume")
 	$SettingsScreen/VolumeSlider.value = volume
@@ -120,6 +123,7 @@ func _set_volume(value: float) -> void:
 		dash_player = player_scene.get_node('DashAudioStreamPlayer')
 		tag_player = player_scene.get_node('TagAudioStreamPlayer')
 		game_over_player = player_scene.get_node('GameOverAudioStreamPlayer')
+		gasp_player = player_scene.get_node('GaspAudioStreamPlayer')
 	
 	music_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(BKRD_MUSIC_DEFAULT_DB)))
 	dodge_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(DODGE_DEFAULT_DB)))
@@ -127,6 +131,7 @@ func _set_volume(value: float) -> void:
 	dash_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(DASH_DEFAULT_DB)))
 	tag_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(TAG_DEFAULT_DB)))
 	game_over_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(DASH_DEFAULT_DB)))
+	gasp_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(GASP_DEFAULT_DB)))
 	
 func _on_settings_back_button_pressed() -> void:
 	print("_on_settings_back_button_pressed")
