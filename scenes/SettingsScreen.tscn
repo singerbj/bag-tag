@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnr3v8uui8gwm"]
+[gd_scene load_steps=6 format=3 uid="uid://cnr3v8uui8gwm"]
+
+[ext_resource type="Theme" uid="uid://cw2jrsfudbjvg" path="res://default_theme.tres" id="1_firu3"]
 
 [sub_resource type="Theme" id="Theme_2y1c4"]
 default_font_size = 200
@@ -17,6 +19,7 @@ offset_left = -2.0
 offset_top = -2.0
 offset_right = 3002.0
 offset_bottom = 1352.0
+theme = ExtResource("1_firu3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -25,6 +28,7 @@ offset_top = 119.0
 offset_right = 1920.0
 offset_bottom = 444.0
 theme = SubResource("Theme_2y1c4")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Settings"
 
 [node name="BackButton" type="Button" parent="."]
@@ -58,28 +62,31 @@ text = "Exit
 "
 
 [node name="FullscreenButton" type="Button" parent="."]
-offset_left = 1270.0
-offset_top = 917.0
-offset_right = 1700.0
-offset_bottom = 1138.0
+layout_mode = 0
+offset_left = 1293.0
+offset_top = 927.0
+offset_right = 1723.0
+offset_bottom = 1148.0
 theme = SubResource("Theme_lwxtk")
 text = "Fullscreen"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
-offset_left = 1367.0
-offset_top = 564.0
-offset_right = 2168.0
-offset_bottom = 889.0
+layout_mode = 0
+offset_left = 1395.0
+offset_top = 562.0
+offset_right = 2196.0
+offset_bottom = 887.0
 theme = SubResource("Theme_2y1c4")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
 text = "Volume"
 
 [node name="VolumeSlider" type="HSlider" parent="."]
 layout_mode = 0
-offset_left = 1020.0
-offset_top = 646.0
-offset_right = 1939.0
-offset_bottom = 795.0
+offset_left = 1048.0
+offset_top = 644.0
+offset_right = 1967.0
+offset_bottom = 793.0
 max_value = 10.0
 value = 10.0
 tick_count = 11

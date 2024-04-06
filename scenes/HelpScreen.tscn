@@ -19,6 +19,7 @@ offset_top = 55.0
 offset_right = 1740.0
 offset_bottom = 380.0
 theme = SubResource("Theme_t1ebu")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Help"
 
 [node name="BackButton" type="Button" parent="."]
@@ -32,11 +33,13 @@ text = "Back
 "
 
 [node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 590.0
 offset_top = 389.0
 offset_right = 2427.0
 offset_bottom = 1163.0
 theme = SubResource("Theme_t1ebu")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
 text = "How to Play:
 1. Tag those bags!

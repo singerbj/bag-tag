@@ -75,7 +75,7 @@ func _process(_delta: float) -> void:
 	get_parent().get_node("CanvasLayer/ScoreLabel").text = str(points)  + (" point" if points == 1 else " points")
 		
 func _physics_process(_delta: float) -> void:
-	if current_game_state == GameState.Running:
+	if current_game_state == GameState.Running && !$Player.hit_people:
 		for i in range(game_objects.size()-1, -1, -1):
 			if is_instance_valid(game_objects[i]): 
 				var game_object: RigidBody2D = game_objects[i]

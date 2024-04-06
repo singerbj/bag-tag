@@ -48,10 +48,10 @@ func _process(delta):
 			jump_budget -= 1 * delta
 			if jump_budget < 0:
 				jump_budget = 0
-		else:
-			if is_on_floor() && jump_budget < DEFAULT_JUMP_BUDGET:
-				jump_budget = DEFAULT_JUMP_BUDGET
-				dash_available = true
+		#else:
+		if is_on_floor() && jump_budget < DEFAULT_JUMP_BUDGET:
+			jump_budget = DEFAULT_JUMP_BUDGET
+			dash_available = true
 		
 		if dash_budget > 0:
 			_show_flames()
@@ -63,11 +63,14 @@ func _process(delta):
 				dash_budget = 0
 		else:
 			_hide_flames()
-			$DashSprite.visible = false
+			if !hit_people: 
+				$DashSprite.visible = false
 			velocity.x = DEFAULT_MOVEMENT_SPEED * speed_multiplier
 		
-		if !hit_people:
-			move_and_slide()
+		if hit_people:
+			velocity.x = 0
+			
+		move_and_slide()
 		
 		_handle_collisions()
 	
@@ -119,7 +122,7 @@ func _smack_game_object(game_object: GameObject, wait_time: int, callback: Calla
 	timer.start()
 	
 func _unhandled_input(event):
-	if game_scene.current_game_state == game_scene.GameState.Running:
+	if game_scene.current_game_state == game_scene.GameState.Running && !hit_people:
 		if event is InputEventKey:
 			if event.is_action_pressed("ui_up"):
 				if is_on_floor():
@@ -137,15 +140,15 @@ func _unhandled_input(event):
 				$DashAudioStreamPlayer.playing = true
 				dash_available = false
 			
-	if event is InputEventScreenTouch:
-		if event.is_pressed():
-			if is_on_floor(): 
-				jumping = true
-				$JumpAudioStreamPlayer.playing = true
-			swipe_start = event.get_position()
-		if event.is_released():	
-			jumping = false
-			_calculate_swipe(event.get_position())
+		if event is InputEventScreenTouch:
+			if event.is_pressed():
+				if is_on_floor(): 
+					jumping = true
+					$JumpAudioStreamPlayer.playing = true
+				swipe_start = event.get_position()
+			if event.is_released():	
+				jumping = false
+				_calculate_swipe(event.get_position())
 
 func _calculate_swipe(swipe_end):
 	if swipe_start != null: 

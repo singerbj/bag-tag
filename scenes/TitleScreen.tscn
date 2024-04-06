@@ -1,12 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://42qq4ke7te0s"]
+[gd_scene load_steps=6 format=3 uid="uid://42qq4ke7te0s"]
 
 [ext_resource type="Theme" uid="uid://cw2jrsfudbjvg" path="res://default_theme.tres" id="1_clfqb"]
-
-[sub_resource type="Theme" id="Theme_4oq34"]
-default_font_size = 200
-
-[sub_resource type="Theme" id="Theme_nxdrh"]
-default_font_size = 75
+[ext_resource type="Texture2D" uid="uid://bb31hk82mum2l" path="res://assets/art/logo.png" id="2_jsnl3"]
 
 [sub_resource type="Theme" id="Theme_1ea38"]
 default_font_size = 50
@@ -23,24 +18,6 @@ offset_top = -2.0
 offset_right = 3002.0
 offset_bottom = 1352.0
 theme = ExtResource("1_clfqb")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 1131.0
-offset_top = 439.0
-offset_right = 1896.0
-offset_bottom = 764.0
-theme = SubResource("Theme_4oq34")
-text = "Bag Tag"
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 1189.0
-offset_top = 721.0
-offset_right = 1826.0
-offset_bottom = 1046.0
-theme = SubResource("Theme_nxdrh")
-text = "The Heckin Game"
 
 [node name="StartGameButton" type="Button" parent="."]
 layout_mode = 0
@@ -82,9 +59,15 @@ text = "Settings
 "
 
 [node name="FullscreenButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 2537.0
 offset_top = 1068.0
 offset_right = 2967.0
 offset_bottom = 1289.0
 theme = SubResource("Theme_py6c5")
 text = "Fullscreen"
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(1507, 548)
+scale = Vector2(0.889648, 0.889648)
+texture = ExtResource("2_jsnl3")

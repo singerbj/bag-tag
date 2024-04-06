@@ -5,6 +5,7 @@ class_name Main
 @onready var GameScreenScene = preload("res://scenes/GameScreen.tscn")
 
 const SETTINGS_FILE_PATH = "user://settings.cfg"
+const HIGH_SCORE_FILE_PATH = "user://high_score.cfg"
 const BKRD_MUSIC_DEFAULT_DB = -20
 const DODGE_DEFAULT_DB = 0
 const JUMP_DEFAULT_DB = -20
@@ -164,10 +165,31 @@ func _on_play_again_pressed() -> void:
 	$GameOverScreen.hide()
 	
 func on_game_over(points: int) -> void:
+	var high_score
+	var new_high_score = false
+	var config = ConfigFile.new()
+	var err = config.load(HIGH_SCORE_FILE_PATH)
+	if err != OK:
+		high_score = points
+		config.set_value("main", "high_score", points)
+		new_high_score = true
+	else:
+		high_score = config.get_value("main", "high_score")
+		if points > high_score:
+			high_score = points
+			config.set_value("main", "high_score", points)
+			new_high_score = true
+	config.save(HIGH_SCORE_FILE_PATH)
+	
 	$TitleScreen.hide()
 	$SettingsScreen.hide()
 	$HelpScreen.hide()
 	game_screen_scene.hide()
-	$GameOverScreen/ScoreLabel.text = str(points) + (" point" if points == 1 else " points")
+	if new_high_score:
+		$GameOverScreen/ScoreLabel.text = str(points) + (" point" if points == 1 else " points")
+		$GameOverScreen/HighScoreLabel.text = "New High Score!"
+	else:
+		$GameOverScreen/ScoreLabel.text = str(points) + (" point" if points == 1 else " points")
+		$GameOverScreen/HighScoreLabel.text = "High Score: " + str(high_score) + (" point" if points == 1 else " points")
 	$GameOverScreen.show()
 	
