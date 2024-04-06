@@ -29,6 +29,7 @@ var hit_people = false
 func _ready() -> void:
 	_hide_flames()
 	$DashSprite.visible = false
+	$TagSprite.visible = false
 	game_scene = get_parent()
 	main_scene = get_parent().get_parent().get_parent()
 	
@@ -85,21 +86,14 @@ func _handle_collisions():
 				main_scene.on_game_over(get_parent().points)
 			)
 			break
-		elif game_object is Backpack:
-			print("Collided with Backpack: ", game_object.name)
+		elif game_object is Backpack || game_object is Suitcase:
+			print("Collided with Backpack/Suitcase: ", game_object.name)
+			$TagSprite.visible = true
 			if(!game_object.impulse_applied):
 				$TagAudioStreamPlayer.playing = true
 			if(!game_object.point_counted):
 				game_scene.points += 1
-			_smack_game_object(game_object, 2)
-			break
-		elif game_object is Suitcase:
-			print("Collided with Suitcase: ", game_object.name)
-			if(!game_object.impulse_applied):
-				$TagAudioStreamPlayer.playing = true
-			if(!game_object.point_counted):
-				game_scene.points += 1
-			_smack_game_object(game_object, 2)
+			_smack_game_object(game_object, 1.5, func(): $TagSprite.visible = false)
 			break
 
 func _get_random_force(min: int, max: int):

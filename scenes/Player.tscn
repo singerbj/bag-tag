@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dne4582qgwx2l"]
+[gd_scene load_steps=11 format=3 uid="uid://dne4582qgwx2l"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ki2ig"]
 [ext_resource type="AudioStream" uid="uid://bq4knvbhxrqm0" path="res://assets/audio/jump.wav" id="3_v8dxu"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://vwgt7ijoavob" path="res://assets/art/Flames1.PNG" id="6_ajlkm"]
 [ext_resource type="Texture2D" uid="uid://qdx5113i4xb8" path="res://assets/art/MomSweat.PNG" id="6_vq500"]
 [ext_resource type="Texture2D" uid="uid://bqshbpwmcexbp" path="res://assets/art/Flames2.PNG" id="7_8ba5k"]
+[ext_resource type="Texture2D" uid="uid://10ika44wnww1" path="res://assets/art/MomTag.PNG" id="10_gm7v2"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_ki2ig")
@@ -54,6 +55,11 @@ position = Vector2(-43, 1)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("6_vq500")
 metadata/_edit_lock_ = true
+
+[node name="TagSprite" type="Sprite2D" parent="."]
+position = Vector2(17, 5)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_gm7v2")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-68, -112, 27, -242, 80, -240, 117, -222, 123, -187, 50, 13, 85, 55, 74, 125, 70, 218, -89, 218, -92, 45, -102, 13)
