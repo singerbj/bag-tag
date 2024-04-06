@@ -47,20 +47,22 @@ text = "Play Again
 
 [node name="ScoreLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1234.0
-offset_top = 532.0
-offset_right = 2754.0
-offset_bottom = 857.0
+offset_left = 740.0
+offset_top = 522.0
+offset_right = 2260.0
+offset_bottom = 847.0
 theme = SubResource("Theme_5ghd4")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
 
 [node name="HighScoreLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 738.0
-offset_top = 768.0
-offset_right = 2270.0
-offset_bottom = 1034.0
+offset_left = 734.0
+offset_top = 742.0
+offset_right = 2266.0
+offset_bottom = 1008.0
 theme = SubResource("Theme_5ghd4")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true

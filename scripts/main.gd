@@ -186,10 +186,10 @@ func on_game_over(points: int) -> void:
 	$HelpScreen.hide()
 	game_screen_scene.hide()
 	if new_high_score:
-		$GameOverScreen/ScoreLabel.text = str(points) + (" point" if points == 1 else " points")
-		$GameOverScreen/HighScoreLabel.text = "New High Score!"
+		$GameOverScreen/ScoreLabel.text = "[center]%s[/center]" % str(points) + (" point" if points == 1 else " points")
+		$GameOverScreen/HighScoreLabel.text = "[center]%s[/center]" % "New High Score!"
 	else:
-		$GameOverScreen/ScoreLabel.text = str(points) + (" point" if points == 1 else " points")
-		$GameOverScreen/HighScoreLabel.text = "High Score: " + str(high_score) + (" point" if points == 1 else " points")
+		$GameOverScreen/ScoreLabel.text = "[center]%s[/center]" % str(points) + (" point" if points == 1 else " points")
+		$GameOverScreen/HighScoreLabel.text = "[center]%s[/center]" % "High Score: " + str(high_score) + (" point" if points == 1 else " points")
 	$GameOverScreen.show()
 	
