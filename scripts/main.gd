@@ -6,15 +6,22 @@ class_name Main
 
 const SETTINGS_FILE_PATH = "user://settings.cfg"
 const BKRD_MUSIC_DEFAULT_DB = -20
+const DODGE_DEFAULT_DB = 0
 const JUMP_DEFAULT_DB = -20
 const DASH_DEFAULT_DB = -12
+const TAG_DEFAULT_DB = -6
+const GAME_OVER_DEFAULT_DB = -6
 const MIN_DB = -60
 
 var game_screen_scene: Node
 var game_scene: Node
-var background_music_player: Node
+var player_scene: Node
+var music_player: Node
+var dodge_player: Node
 var jump_player: Node
 var dash_player: Node
+var tag_player: Node
+var game_over_player: Node
 var config = ConfigFile.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -25,9 +32,13 @@ func _ready() -> void:
 		
 	game_screen_scene = get_node("GameScreen")
 	game_scene = game_screen_scene.get_node("Game")
-	background_music_player = game_scene.get_node('AudioStreamPlayer')
-	jump_player = game_scene.get_node('Player').get_node('JumpAudioStreamPlayer')
-	dash_player = game_scene.get_node('Player').get_node('DashAudioStreamPlayer')
+	player_scene = game_scene.get_node('Player')
+	music_player = game_scene.get_node('MusicAudioStreamPlayer')
+	dodge_player = game_scene.get_node('DodgeAudioStreamPlayer')
+	jump_player = player_scene.get_node('JumpAudioStreamPlayer')
+	dash_player = player_scene.get_node('DashAudioStreamPlayer')
+	tag_player = player_scene.get_node('TagAudioStreamPlayer')
+	game_over_player = player_scene.get_node('GameOverAudioStreamPlayer')
 	
 	var volume = config.get_value("main", "volume")
 	$SettingsScreen/VolumeSlider.value = volume
@@ -100,9 +111,22 @@ func _on_volume_changed(value: float) -> void:
 func _set_volume(value: float) -> void:
 	config.set_value("main", "volume", value)
 	config.save(SETTINGS_FILE_PATH)	
-	background_music_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(BKRD_MUSIC_DEFAULT_DB)))
+	
+	if !is_instance_valid(music_player):
+		player_scene = game_scene.get_node('Player')
+		music_player = game_scene.get_node('MusicAudioStreamPlayer')
+		dodge_player = game_scene.get_node('DodgeAudioStreamPlayer')
+		jump_player = player_scene.get_node('JumpAudioStreamPlayer')
+		dash_player = player_scene.get_node('DashAudioStreamPlayer')
+		tag_player = player_scene.get_node('TagAudioStreamPlayer')
+		game_over_player = player_scene.get_node('GameOverAudioStreamPlayer')
+	
+	music_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(BKRD_MUSIC_DEFAULT_DB)))
+	dodge_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(DODGE_DEFAULT_DB)))
 	jump_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(JUMP_DEFAULT_DB)))
 	dash_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(DASH_DEFAULT_DB)))
+	tag_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(TAG_DEFAULT_DB)))
+	game_over_player.volume_db = -1000 if value == 0 else MIN_DB + (value / 10 * (abs(MIN_DB) - abs(DASH_DEFAULT_DB)))
 	
 func _on_settings_back_button_pressed() -> void:
 	print("_on_settings_back_button_pressed")

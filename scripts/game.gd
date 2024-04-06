@@ -80,6 +80,7 @@ func _physics_process(_delta: float) -> void:
 			if is_instance_valid(game_objects[i]): 
 				var game_object: RigidBody2D = game_objects[i]
 				if !(game_object is Backpack or game_object is Suitcase) && !game_object.point_counted && game_object.position.x < ($Player.position.x - POINT_DISTANCE_BUFFER):
+					$DodgeAudioStreamPlayer.playing = true
 					points += 1
 					game_object.point_counted = true
 				
@@ -121,8 +122,8 @@ func _input(event):
 func start_game():
 	if current_game_state == GameState.Paused:
 		get_parent().get_node("CanvasLayer").show()
-		if !$AudioStreamPlayer.playing:
-			$AudioStreamPlayer.playing = true
+		if !$MusicAudioStreamPlayer.playing:
+			$MusicAudioStreamPlayer.playing = true
 		camera.enabled = true
 		current_game_state = GameState.Running
 	elif current_game_state == GameState.Stopped:
@@ -135,7 +136,7 @@ func pause_game():
 		print("Error: Cannot pause an already paused game!")
 	elif current_game_state == GameState.Running:
 		get_parent().get_node("CanvasLayer").hide()
-		#$AudioStreamPlayer.playing = false
+		#$MusicAudioStreamPlayer.playing = false
 		camera.enabled = false
 		current_game_state = GameState.Paused
 	elif current_game_state == GameState.Stopped:
@@ -144,7 +145,7 @@ func pause_game():
 func stop_game():
 	if current_game_state == GameState.Running || current_game_state == GameState.Paused:
 		get_parent().get_node("CanvasLayer").hide()
-		$AudioStreamPlayer.playing = false
+		$MusicAudioStreamPlayer.playing = false
 		camera.enabled = false
 		current_game_state = GameState.Stopped
 	elif current_game_state == GameState.Stopped:

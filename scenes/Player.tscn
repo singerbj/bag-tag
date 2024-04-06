@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dne4582qgwx2l"]
+[gd_scene load_steps=10 format=3 uid="uid://dne4582qgwx2l"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ki2ig"]
 [ext_resource type="AudioStream" uid="uid://bq4knvbhxrqm0" path="res://assets/audio/jump.wav" id="3_v8dxu"]
 [ext_resource type="AudioStream" uid="uid://clvu7s3laxcnv" path="res://assets/audio/flame.ogg" id="4_by8cq"]
+[ext_resource type="AudioStream" uid="uid://dll24qhmw3mub" path="res://assets/audio/tag.ogg" id="4_uhrak"]
+[ext_resource type="AudioStream" uid="uid://c0b41aeb70oxj" path="res://assets/audio/game_over.wav" id="5_mtyer"]
 [ext_resource type="Texture2D" uid="uid://cdhytr0q0snvk" path="res://assets/art/MomSmile.PNG" id="5_nmbkr"]
 [ext_resource type="Texture2D" uid="uid://vwgt7ijoavob" path="res://assets/art/Flames1.PNG" id="6_ajlkm"]
 [ext_resource type="Texture2D" uid="uid://qdx5113i4xb8" path="res://assets/art/MomSweat.PNG" id="6_vq500"]
@@ -18,6 +20,14 @@ volume_db = -20.0
 [node name="DashAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_by8cq")
 volume_db = -12.0
+
+[node name="TagAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uhrak")
+volume_db = -6.0
+
+[node name="GameOverAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mtyer")
+volume_db = -6.0
 
 [node name="Fire" type="Node2D" parent="."]
 

@@ -74,16 +74,19 @@ func _handle_collisions():
 		var body := collision.get_collider()
 		if body is People:
 			print("Collided with People: ", body.name)
+			$GameOverAudioStreamPlayer.playing = true
 			game_scene.stop_game()
 			main_scene.on_game_over(get_parent().points)
 			break
 		elif body is Backpack:
 			print("Collided with Backpack: ", body.name)
+			$TagAudioStreamPlayer.playing = true
 			body.queue_free()
 			game_scene.points += 1
 			break
 		elif body is Suitcase:
 			print("Collided with Suitcase: ", body.name)
+			$TagAudioStreamPlayer.playing = true
 			body.queue_free()
 			game_scene.points += 1
 			break
