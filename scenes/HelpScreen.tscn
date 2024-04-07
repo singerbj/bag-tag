@@ -36,10 +36,10 @@ text = "Back
 
 [node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 187.0
-offset_top = 358.0
-offset_right = 2808.0
-offset_bottom = 1287.0
+offset_left = 548.0
+offset_top = 371.0
+offset_right = 3169.0
+offset_bottom = 1380.0
 theme = SubResource("Theme_t1ebu")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
@@ -53,13 +53,32 @@ text = "[b]How to Play:[/b]
 2. Avoid squishing your family!
 3. Keep on going!
 
-[b]Mobile Controls[/b]: Tap to Jump and Swipe Right to Dash
-[b]Keyboard Controls:[/b] Up Arrow to Jump and Right Arrow to Dash
+
+
 
 
 [b]Made with      by B&G[/b]"
 
+[node name="HelpDescriptionLabel2" type="RichTextLabel" parent="."]
+offset_left = 1581.0
+offset_top = 378.0
+offset_right = 4202.0
+offset_bottom = 1387.0
+theme = SubResource("Theme_t1ebu")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 70
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+bbcode_enabled = true
+text = "[b]Mobile Controls[/b]:
+Tap to Jump and Swipe Right to Dash
+
+[b]Keyboard Controls:[/b] 
+Up Arrow to Jump and Right Arrow to Dash"
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(600, 1200)
+position = Vector2(959, 1186)
 scale = Vector2(0.258621, 0.258621)
 texture = ExtResource("1_kgepc")
