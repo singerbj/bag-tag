@@ -29,8 +29,8 @@ text = "Game Over"
 layout_mode = 0
 offset_left = 39.0
 offset_top = 1078.0
-offset_right = 293.0
-offset_bottom = 1299.0
+offset_right = 240.0
+offset_bottom = 1172.0
 theme = SubResource("Theme_sio8u")
 text = "Exit
 "
@@ -39,8 +39,8 @@ text = "Exit
 layout_mode = 0
 offset_left = 739.0
 offset_top = 1060.0
-offset_right = 2270.0
-offset_bottom = 1281.0
+offset_right = 997.0
+offset_bottom = 1177.0
 theme = SubResource("Theme_bbmqs")
 text = "Play Again
 "

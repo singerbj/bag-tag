@@ -35,8 +35,8 @@ text = "Settings"
 layout_mode = 0
 offset_left = 51.0
 offset_top = 42.0
-offset_right = 305.0
-offset_bottom = 263.0
+offset_right = 180.0
+offset_bottom = 182.0
 theme = SubResource("Theme_lwxtk")
 text = "Back
 "
@@ -45,8 +45,8 @@ text = "Back
 layout_mode = 0
 offset_left = 2693.0
 offset_top = 45.0
-offset_right = 2947.0
-offset_bottom = 266.0
+offset_right = 2827.0
+offset_bottom = 157.0
 theme = SubResource("Theme_sxism")
 text = "Help
 "
@@ -55,18 +55,18 @@ text = "Help
 layout_mode = 0
 offset_left = 39.0
 offset_top = 1078.0
-offset_right = 293.0
-offset_bottom = 1299.0
+offset_right = 155.0
+offset_bottom = 1222.0
 theme = SubResource("Theme_5w2xa")
 text = "Exit
 "
 
 [node name="FullscreenButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 1293.0
+offset_left = 1296.0
 offset_top = 927.0
-offset_right = 1723.0
-offset_bottom = 1148.0
+offset_right = 1557.0
+offset_bottom = 1063.0
 theme = SubResource("Theme_lwxtk")
 text = "Fullscreen"
 

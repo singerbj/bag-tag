@@ -23,8 +23,8 @@ theme = ExtResource("1_clfqb")
 layout_mode = 0
 offset_left = 879.0
 offset_top = 1066.0
-offset_right = 2129.0
-offset_bottom = 1287.0
+offset_right = 1160.0
+offset_bottom = 1186.0
 theme = SubResource("Theme_1ea38")
 text = "Start Game"
 
@@ -32,8 +32,8 @@ text = "Start Game"
 layout_mode = 0
 offset_left = 2406.0
 offset_top = 41.0
-offset_right = 2660.0
-offset_bottom = 262.0
+offset_right = 2584.0
+offset_bottom = 167.0
 theme = SubResource("Theme_c5gma")
 text = "Help
 "
@@ -42,8 +42,8 @@ text = "Help
 layout_mode = 0
 offset_left = 39.0
 offset_top = 1078.0
-offset_right = 293.0
-offset_bottom = 1299.0
+offset_right = 194.0
+offset_bottom = 1238.0
 theme = SubResource("Theme_c5gma")
 text = "Exit
 "
@@ -52,8 +52,8 @@ text = "Exit
 layout_mode = 0
 offset_left = 2704.0
 offset_top = 42.0
-offset_right = 2958.0
-offset_bottom = 263.0
+offset_right = 2906.0
+offset_bottom = 161.0
 theme = SubResource("Theme_c5gma")
 text = "Settings
 "
@@ -62,8 +62,8 @@ text = "Settings
 layout_mode = 0
 offset_left = 2537.0
 offset_top = 1068.0
-offset_right = 2967.0
-offset_bottom = 1289.0
+offset_right = 2804.0
+offset_bottom = 1208.0
 theme = SubResource("Theme_py6c5")
 text = "Fullscreen"
 

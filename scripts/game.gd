@@ -109,15 +109,6 @@ func _get_random_force():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	return 200 if rng.randi_range(0, 1) > 0 else -200
-
-func _input(event):
-	if current_game_state == GameState.Running:
-		if event is InputEventKey:
-			# TODO: Remove these later, probably
-			if event.is_action_pressed("ui_cancel"):
-				get_tree().quit()
-			if event.is_action_pressed("reset_game"):
-				$Player.position = Vector2(0, 0)
 			
 func start_game():
 	if current_game_state == GameState.Paused:

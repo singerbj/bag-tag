@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://trke8ta7a50i"]
+[gd_scene load_steps=4 format=3 uid="uid://trke8ta7a50i"]
+
+[ext_resource type="Texture2D" uid="uid://crc6lin688bo" path="res://assets/art/heart.png" id="1_kgepc"]
 
 [sub_resource type="Theme" id="Theme_t1ebu"]
 default_font_size = 200
@@ -26,26 +28,38 @@ text = "Help"
 layout_mode = 0
 offset_left = 51.0
 offset_top = 42.0
-offset_right = 305.0
-offset_bottom = 263.0
+offset_right = 177.0
+offset_bottom = 165.0
 theme = SubResource("Theme_gemsm")
 text = "Back
 "
 
 [node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 590.0
-offset_top = 389.0
-offset_right = 2427.0
-offset_bottom = 1163.0
+offset_left = 187.0
+offset_top = 358.0
+offset_right = 2808.0
+offset_bottom = 1287.0
 theme = SubResource("Theme_t1ebu")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
-text = "How to Play:
+theme_override_font_sizes/bold_font_size = 70
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+bbcode_enabled = true
+text = "[b]How to Play:[/b]
 1. Tag those bags!
 2. Avoid squishing your family!
 3. Keep on going!
 
-Mobile Controls: Tap to Jump and Swipe Right to Dash
+[b]Mobile Controls[/b]: Tap to Jump and Swipe Right to Dash
+[b]Keyboard Controls:[/b] Up Arrow to Jump and Right Arrow to Dash
 
-Keyboard Controls: Up Arrow to Jump and Right Arrow to Dash"
+
+[b]Made with      by B&G[/b]"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(600, 1200)
+scale = Vector2(0.258621, 0.258621)
+texture = ExtResource("1_kgepc")

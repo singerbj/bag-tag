@@ -52,6 +52,9 @@ func _ready() -> void:
 		$TitleScreen/ExitButton.hide()
 		$SettingsScreen/ExitButton.hide()
 		$GameOverScreen/ExitButton.hide()
+	elif OS.has_feature("android") || OS.has_feature("ios"):
+		$TitleScreen/FullscreenButton.hide()
+		$SettingsScreen/FullscreenButton.hide()
 	
 	
 	$TitleScreen.show()
@@ -60,6 +63,99 @@ func _ready() -> void:
 	game_screen_scene.hide()
 	$GameOverScreen.hide()
 	
+	# set button sizes
+	const SMALL_BUTTON_SIZE = Vector2(300, 200)
+	const MEDIUM_BUTTON_SIZE = Vector2(600, 200)
+	const LARGE_BUTTON_SIZE = Vector2(1200, 200)
+	const MARGIN = 60
+	const PADDING = 30
+	var SCREEN_WIDTH = get_viewport().get_visible_rect().size.x
+	var SCREEN_HEIGHT = get_viewport().get_visible_rect().size.y
+	var SCREEN_HORIZONTAL_CENTER = SCREEN_WIDTH / 2
+	var SCREEN_VERTICAL_CENTER = SCREEN_HEIGHT / 2
+	
+	$TitleScreen/StartGameButton.custom_minimum_size = LARGE_BUTTON_SIZE
+	$TitleScreen/SettingsButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$TitleScreen/HelpButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$TitleScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$TitleScreen/FullscreenButton.custom_minimum_size = SMALL_BUTTON_SIZE
+
+	$SettingsScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$SettingsScreen/HelpButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$SettingsScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$SettingsScreen/FullscreenButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$SettingsScreen/VolumeSlider.custom_minimum_size = SMALL_BUTTON_SIZE
+
+	$HelpScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
+
+	game_screen_scene.get_node("CanvasLayer/SettingsButton").custom_minimum_size = SMALL_BUTTON_SIZE
+
+	$GameOverScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$GameOverScreen/PlayAgainButton.custom_minimum_size = LARGE_BUTTON_SIZE
+	
+	# set button positions
+	$TitleScreen/StartGameButton.set_position(Vector2(
+		SCREEN_HORIZONTAL_CENTER - LARGE_BUTTON_SIZE.x / 2,
+		SCREEN_HEIGHT - MARGIN - LARGE_BUTTON_SIZE.y
+	))
+	$TitleScreen/SettingsButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		MARGIN
+	))
+	$TitleScreen/HelpButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x - PADDING - SMALL_BUTTON_SIZE.x,
+		MARGIN
+	))
+	$TitleScreen/ExitButton.set_position(Vector2(
+		MARGIN,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+	$TitleScreen/FullscreenButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+#
+	$SettingsScreen/BackButton.set_position(Vector2(
+		MARGIN,
+		MARGIN
+	))
+	$SettingsScreen/HelpButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		MARGIN
+	))
+	$SettingsScreen/ExitButton.set_position(Vector2(
+		MARGIN,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+	$SettingsScreen/FullscreenButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+	$SettingsScreen/VolumeSlider.set_position(Vector2(
+		SCREEN_HORIZONTAL_CENTER - $SettingsScreen/VolumeSlider.size.x / 2,
+		$SettingsScreen/VolumeSlider.position.y
+	))
+#
+	$HelpScreen/BackButton.set_position(Vector2(
+		MARGIN,
+		MARGIN
+	))
+#
+	game_screen_scene.get_node("CanvasLayer/SettingsButton").set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		MARGIN
+	))
+#
+	$GameOverScreen/ExitButton.set_position(Vector2(
+		MARGIN,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+	$GameOverScreen/PlayAgainButton.set_position(Vector2(
+		SCREEN_HORIZONTAL_CENTER - LARGE_BUTTON_SIZE.x / 2,
+		SCREEN_HEIGHT - MARGIN - LARGE_BUTTON_SIZE.y
+	))
+	
+	# connect button signals
 	$TitleScreen/StartGameButton.connect("pressed", self._on_start_game_button_pressed)
 	$TitleScreen/SettingsButton.connect("pressed", self._on_settings_button_pressed)
 	$TitleScreen/HelpButton.connect("pressed", self._on_help_button_pressed)
@@ -192,4 +288,8 @@ func on_game_over(points: int) -> void:
 		$GameOverScreen/ScoreLabel.text = "[center]%s[/center]" % str(points) + (" point" if points == 1 else " points")
 		$GameOverScreen/HighScoreLabel.text = "[center]%s[/center]" % "High Score: " + str(high_score) + (" point" if points == 1 else " points")
 	$GameOverScreen.show()
-	
+
+func _input(event):
+	if event is InputEventKey:
+		if !OS.has_feature("web") && event.is_action_pressed("ui_cancel"):
+			get_tree().quit()
