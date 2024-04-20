@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjt4ppq3lx7dj"]
+[gd_scene load_steps=9 format=3 uid="uid://uo3671f2fs1v"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_34f43"]
 [ext_resource type="PackedScene" uid="uid://bm1moac027y38" path="res://scenes/Collision2DRendered.tscn" id="2_7n24l"]
-[ext_resource type="PackedScene" uid="uid://ddsmp4kxqict2" path="res://scenes/BackgroundManager.tscn" id="2_614eh"]
-[ext_resource type="AudioStream" uid="uid://d2avgh2wvmu0y" path="res://assets/audio/theme.mp3" id="4_opxje"]
-[ext_resource type="AudioStream" uid="uid://b8vm21ptv63ms" path="res://assets/audio/ding.mp3" id="5_rbmp3"]
-[ext_resource type="PackedScene" uid="uid://dne4582qgwx2l" path="res://scenes/Player.tscn" id="5_xu4y6"]
+[ext_resource type="PackedScene" path="res://scenes/BackgroundManager.tscn" id="2_by4nw"]
+[ext_resource type="PackedScene" uid="uid://dne4582qgwx2l" path="res://scenes/Player.tscn" id="4_om2is"]
+[ext_resource type="AudioStream" uid="uid://d2avgh2wvmu0y" path="res://assets/audio/theme.mp3" id="5_lo4di"]
+[ext_resource type="AudioStream" uid="uid://b8vm21ptv63ms" path="res://assets/audio/ding.mp3" id="6_x61kj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7r"]
 size = Vector2(6000, 134)
@@ -18,7 +18,7 @@ default_font_size = 50
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("1_34f43")
 
-[node name="BackgroundManager" parent="Game" instance=ExtResource("2_614eh")]
+[node name="BackgroundManager" parent="Game" instance=ExtResource("2_by4nw")]
 
 [node name="Floor" type="StaticBody2D" parent="Game"]
 position = Vector2(452, 1339)
@@ -38,15 +38,15 @@ enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 
-[node name="Player" parent="Game" instance=ExtResource("5_xu4y6")]
+[node name="Player" parent="Game" instance=ExtResource("4_om2is")]
 position = Vector2(442, 938)
 
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="Game"]
-stream = ExtResource("4_opxje")
+stream = ExtResource("5_lo4di")
 volume_db = -20.0
 
 [node name="DodgeAudioStreamPlayer" type="AudioStreamPlayer" parent="Game"]
-stream = ExtResource("5_rbmp3")
+stream = ExtResource("6_x61kj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
