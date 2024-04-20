@@ -29,7 +29,7 @@ layout_mode = 0
 offset_left = 51.0
 offset_top = 42.0
 offset_right = 177.0
-offset_bottom = 165.0
+offset_bottom = 121.0
 theme = SubResource("Theme_gemsm")
 text = "Back
 "

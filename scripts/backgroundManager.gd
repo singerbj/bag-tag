@@ -15,8 +15,8 @@ var Shop = preload("res://assets/art/Shop.PNG")
 var WindowsWithPlane = preload("res://assets/art/WindowsWithPlane.PNG")
 var WindowsWithStuff = preload("res://assets/art/WindowsWithStuff.PNG")
 var Windows = preload("res://assets/art/Windows.PNG")
+
 var backgroundTextures = [
-	#Blank,
 	BlankDoor,
 	Shop,
 	WindowsWithPlane,
@@ -25,14 +25,6 @@ var backgroundTextures = [
 	WindowsWithStuff,
 	Windows
 ]
-#var canHaveProps = [
-	#Blank,
-	#BlankDoor,
-	#Shop,
-	#WindowsWithPlane,
-	#WindowsWithStuff,
-	#Windows
-#]
 var next_background_x = 0
 var game_scene
 var player_scene
@@ -44,7 +36,6 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	for child in get_children():
-		#print("--->", player_scene.position.x - child.position.x, " ~ ", BKRD_WIDTH * BKRD_SCALE * 2 )
 		if (player_scene.position.x - child.position.x) > BKRD_WIDTH * BKRD_SCALE * 2:
 			child.queue_free()
 		else:
@@ -53,6 +44,7 @@ func _process(delta: float) -> void:
 	next_background_x += delta * 100
 		
 	if get_child_count() < MIN_BKRDS:
+		print("adding bkrd")
 		for i in (MIN_BKRDS - get_child_count()):
 			_add_background()
 		

@@ -40,7 +40,7 @@ layout_mode = 0
 offset_left = 739.0
 offset_top = 1060.0
 offset_right = 997.0
-offset_bottom = 1177.0
+offset_bottom = 1137.0
 theme = SubResource("Theme_bbmqs")
 text = "Play Again
 "

@@ -54,7 +54,7 @@ stream = ExtResource("5_rbmp3")
 offset_left = 2704.0
 offset_top = 42.0
 offset_right = 2906.0
-offset_bottom = 166.0
+offset_bottom = 119.0
 theme = SubResource("Theme_ahys2")
 text = "Settings
 "
