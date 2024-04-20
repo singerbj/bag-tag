@@ -72,7 +72,7 @@ func _process(_delta: float) -> void:
 				new_game_object.apply_torque_impulse(_get_random_force())
 				new_game_object.inertia = 0
 				
-	get_parent().get_node("CanvasLayer/ScoreLabel").text = str(points)  + (" point" if points == 1 else " points")
+	get_parent().get_node("CanvasLayer/ScoreLabel").text = " " + str(points)  + (" point" if points == 1 else " points")
 		
 func _physics_process(_delta: float) -> void:
 	if current_game_state == GameState.Running && !$Player.hit_people:

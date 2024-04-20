@@ -29,10 +29,6 @@ var config = ConfigFile.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var err = config.load(SETTINGS_FILE_PATH)
-	if err != OK:
-		config.set_value("main", "volume", 10.0)
-		
 	game_screen_scene = get_node("GameScreen")
 	game_scene = game_screen_scene.get_node("Game")
 	player_scene = game_scene.get_node('Player')
@@ -44,9 +40,7 @@ func _ready() -> void:
 	game_over_player = player_scene.get_node('GameOverAudioStreamPlayer')
 	gasp_player = player_scene.get_node('GaspAudioStreamPlayer')
 	
-	var volume = config.get_value("main", "volume")
-	$SettingsScreen/VolumeSlider.value = volume
-	_set_volume(volume)
+	_init_volume()
 	
 	if OS.has_feature("web"):
 		$TitleScreen/ExitButton.hide()
@@ -175,12 +169,9 @@ func _ready() -> void:
 	$GameOverScreen/ExitButton.connect("pressed", self._on_exit_button_pressed)
 	$GameOverScreen/PlayAgainButton.connect("pressed", self._on_play_again_pressed)
 
-#func _unhandled_input(event: InputEvent) -> void:
-	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	#DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-
 func _on_start_game_button_pressed() -> void:
 	print("_on_start_game_button_pressed")
+	_init_volume()
 	$TitleScreen.hide()
 	game_screen_scene.show()
 	game_scene.start_game()
@@ -207,6 +198,15 @@ func _on_fullscreen_button_pressed() -> void:
 	
 func _on_volume_changed(value: float) -> void:
 	_set_volume(value)
+	
+func _init_volume() -> void:
+	var err = config.load(SETTINGS_FILE_PATH)
+	if err != OK:
+		config.set_value("main", "volume", 10.0)
+	
+	var volume = config.get_value("main", "volume")
+	$SettingsScreen/VolumeSlider.value = volume
+	_set_volume(volume)
 	
 func _set_volume(value: float) -> void:
 	config.set_value("main", "volume", value)

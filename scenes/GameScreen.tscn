@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjt4ppq3lx7dj"]
+[gd_scene load_steps=9 format=3 uid="uid://bjt4ppq3lx7dj"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_34f43"]
 [ext_resource type="PackedScene" uid="uid://bm1moac027y38" path="res://scenes/Collision2DRendered.tscn" id="2_7n24l"]
+[ext_resource type="PackedScene" uid="uid://ddsmp4kxqict2" path="res://scenes/BackgroundManager.tscn" id="2_614eh"]
 [ext_resource type="AudioStream" uid="uid://d2avgh2wvmu0y" path="res://assets/audio/theme.mp3" id="4_opxje"]
 [ext_resource type="AudioStream" uid="uid://b8vm21ptv63ms" path="res://assets/audio/ding.mp3" id="5_rbmp3"]
 [ext_resource type="PackedScene" uid="uid://dne4582qgwx2l" path="res://scenes/Player.tscn" id="5_xu4y6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7r"]
-size = Vector2(6000, 93)
+size = Vector2(6000, 134)
 
 [sub_resource type="Theme" id="Theme_ahys2"]
 default_font_size = 50
@@ -17,15 +18,18 @@ default_font_size = 50
 [node name="Game" type="Node2D" parent="."]
 script = ExtResource("1_34f43")
 
+[node name="BackgroundManager" parent="Game" instance=ExtResource("2_614eh")]
+
 [node name="Floor" type="StaticBody2D" parent="Game"]
 position = Vector2(452, 1339)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Floor"]
-position = Vector2(1048.5, -35.5)
+position = Vector2(1048.5, -56)
 shape = SubResource("RectangleShape2D_ajw7r")
 metadata/_edit_lock_ = true
 
 [node name="Collision2dRendered" parent="Game/Floor/CollisionShape2D" instance=ExtResource("2_7n24l")]
+visible = false
 color = Color(0.164706, 0.376471, 0, 1)
 
 [node name="Camera" type="Camera2D" parent="Game/Floor"]
@@ -35,7 +39,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 
 [node name="Player" parent="Game" instance=ExtResource("5_xu4y6")]
-position = Vector2(442, 953)
+position = Vector2(442, 938)
 
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="Game"]
 stream = ExtResource("4_opxje")
@@ -60,5 +64,7 @@ offset_left = 61.0
 offset_top = 61.0
 offset_right = 640.0
 offset_bottom = 221.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 30
 theme_override_font_sizes/normal_font_size = 100
 text = "0 points"

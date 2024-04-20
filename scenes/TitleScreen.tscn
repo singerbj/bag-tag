@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://42qq4ke7te0s"]
 
 [ext_resource type="Theme" uid="uid://cw2jrsfudbjvg" path="res://default_theme.tres" id="1_clfqb"]
-[ext_resource type="Texture2D" uid="uid://bb31hk82mum2l" path="res://assets/art/logo.png" id="2_jsnl3"]
+[ext_resource type="Texture2D" uid="uid://c3wki3kjoisgc" path="res://assets/art/logo_transparent.PNG" id="2_3quqd"]
 
 [sub_resource type="Theme" id="Theme_1ea38"]
 default_font_size = 50
@@ -68,6 +68,6 @@ theme = SubResource("Theme_py6c5")
 text = "Fullscreen"
 
 [node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(1507, 548)
+position = Vector2(1500, 548)
 scale = Vector2(0.889648, 0.889648)
-texture = ExtResource("2_jsnl3")
+texture = ExtResource("2_3quqd")

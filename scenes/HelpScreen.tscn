@@ -60,6 +60,7 @@ text = "[b]How to Play:[/b]
 [b]Made with      by B&G[/b]"
 
 [node name="HelpDescriptionLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 1581.0
 offset_top = 378.0
 offset_right = 4202.0
