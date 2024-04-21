@@ -1,7 +1,5 @@
 extends Node
 
-class_name BackgroundManager
-
 const BKRD_SCALE = 1.25
 const BKRD_WIDTH = 1080
 const BKRD_HEIGHT = 1920
@@ -11,7 +9,7 @@ const MIN_BKRDS = 5
 
 var Blank = preload("res://assets/art/Blank.PNG")
 var BlankDoor = preload("res://assets/art/BlankDoor.PNG")
-var Shop = preload("res://assets/art/Shop.PNG")
+var Shop = preload("res://assets/art/shop.PNG")
 var WindowsWithPlane = preload("res://assets/art/WindowsWithPlane.PNG")
 var WindowsWithStuff = preload("res://assets/art/WindowsWithStuff.PNG")
 var Windows = preload("res://assets/art/Windows.PNG")
@@ -60,4 +58,3 @@ func _add_background() -> void:
 	new_sprite.position.x = next_background_x + (BKRD_WIDTH / 2)
 	new_sprite.position.y = (BKRD_HEIGHT / 2) - BKRD_OFFSET
 	next_background_x += (BKRD_WIDTH * BKRD_SCALE * 2) - 300
-		
