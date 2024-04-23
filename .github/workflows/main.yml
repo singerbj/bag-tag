@@ -8,15 +8,27 @@ on:
       build-ios:
         description: 'Build iOS'
         required: false
-        default: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
       deploy-ios:
         description: 'Deploy iOS'
         required: false
-        default: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
       deploy-android:
         description: 'Deploy Android'
         required: false
-        default: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
       
 permissions:
   contents: write
