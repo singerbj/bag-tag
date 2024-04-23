@@ -22,7 +22,7 @@ var backgroundTextures = [
 	WindowsWithStuff,
 	Windows
 ]
-var next_background_x = 0
+var next_background_x = -1920
 var game_scene
 var player_scene
 var last_picked_bkrd = backgroundTextures[0]
