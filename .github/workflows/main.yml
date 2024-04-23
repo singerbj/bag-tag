@@ -3,6 +3,21 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      build-ios:
+        description: 'Build iOS'
+        required: false
+        default: false
+      deploy-ios:
+        description: 'Deploy iOS'
+        required: false
+        default: false
+      deploy-android:
+        description: 'Deploy Android'
+        required: false
+        default: false
+      
 permissions:
   contents: write
 
