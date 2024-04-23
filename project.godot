@@ -13,6 +13,7 @@ config_version=5
 config/name="bag-tag"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [display]
