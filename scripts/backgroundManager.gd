@@ -6,7 +6,6 @@ const BKRD_HEIGHT = 1920
 const BKRD_OFFSET = 285
 const MIN_BKRDS = 5
 
-
 var Blank = preload("res://assets/art/Blank.PNG")
 var BlankDoor = preload("res://assets/art/BlankDoor.PNG")
 var Shop = preload("res://assets/art/shop.PNG")
@@ -42,7 +41,6 @@ func _process(delta: float) -> void:
 	next_background_x += delta * 100
 		
 	if get_child_count() < MIN_BKRDS:
-		print("adding bkrd")
 		for i in (MIN_BKRDS - get_child_count()):
 			_add_background()
 		
