@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_34f43"]
 [ext_resource type="PackedScene" uid="uid://bm1moac027y38" path="res://scenes/Collision2DRendered.tscn" id="2_7n24l"]
 [ext_resource type="PackedScene" uid="uid://ciqci7f6jdyi2" path="res://scenes/BackgroundManager.tscn" id="2_by4nw"]
-[ext_resource type="PackedScene" uid="uid://dne4582qgwx2l" path="res://scenes/Player.tscn" id="4_05f63"]
-[ext_resource type="AudioStream" uid="uid://d2avgh2wvmu0y" path="res://assets/audio/theme.mp3" id="5_a41x0"]
-[ext_resource type="AudioStream" uid="uid://b8vm21ptv63ms" path="res://assets/audio/ding.mp3" id="6_6cn26"]
+[ext_resource type="PackedScene" uid="uid://dne4582qgwx2l" path="res://scenes/Player.tscn" id="4_5bjoq"]
+[ext_resource type="AudioStream" uid="uid://d2avgh2wvmu0y" path="res://assets/audio/theme.mp3" id="5_7lb58"]
+[ext_resource type="AudioStream" uid="uid://b8vm21ptv63ms" path="res://assets/audio/ding.mp3" id="6_xwjf2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7r"]
 size = Vector2(6000, 134)
@@ -38,15 +38,15 @@ enabled = false
 position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 
-[node name="Player" parent="Game" instance=ExtResource("4_05f63")]
+[node name="Player" parent="Game" instance=ExtResource("4_5bjoq")]
 position = Vector2(442, 938)
 
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="Game"]
-stream = ExtResource("5_a41x0")
+stream = ExtResource("5_7lb58")
 volume_db = -20.0
 
 [node name="DodgeAudioStreamPlayer" type="AudioStreamPlayer" parent="Game"]
-stream = ExtResource("6_6cn26")
+stream = ExtResource("6_xwjf2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

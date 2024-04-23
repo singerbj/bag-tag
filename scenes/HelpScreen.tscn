@@ -9,10 +9,8 @@ default_font_size = 200
 default_font_size = 50
 
 [node name="HelpScreen" type="Panel"]
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 3012.0
-offset_bottom = 1362.0
+offset_right = 3028.0
+offset_bottom = 1378.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0

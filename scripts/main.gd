@@ -46,10 +46,15 @@ func _ready() -> void:
 		$TitleScreen/ExitButton.hide()
 		$SettingsScreen/ExitButton.hide()
 		$GameOverScreen/ExitButton.hide()
-	elif OS.has_feature("android") || OS.has_feature("ios"):
+	elif OS.has_feature("android"):
 		$TitleScreen/FullscreenButton.hide()
 		$SettingsScreen/FullscreenButton.hide()
-	
+	elif OS.has_feature("ios"):
+		$TitleScreen/ExitButton.hide()
+		$SettingsScreen/ExitButton.hide()
+		$GameOverScreen/ExitButton.hide()
+		$TitleScreen/FullscreenButton.hide()
+		$SettingsScreen/FullscreenButton.hide()
 	
 	$TitleScreen.show()
 	$SettingsScreen.hide()
@@ -57,97 +62,8 @@ func _ready() -> void:
 	game_screen_scene.hide()
 	$GameOverScreen.hide()
 	
-	# set button sizes
-	const SMALL_BUTTON_SIZE = Vector2(300, 200)
-	const MEDIUM_BUTTON_SIZE = Vector2(600, 200)
-	const LARGE_BUTTON_SIZE = Vector2(1200, 200)
-	const MARGIN = 60
-	const PADDING = 30
-	var SCREEN_WIDTH = get_viewport().get_visible_rect().size.x
-	var SCREEN_HEIGHT = get_viewport().get_visible_rect().size.y
-	var SCREEN_HORIZONTAL_CENTER = SCREEN_WIDTH / 2
-	var SCREEN_VERTICAL_CENTER = SCREEN_HEIGHT / 2
-	
-	$TitleScreen/StartGameButton.custom_minimum_size = LARGE_BUTTON_SIZE
-	$TitleScreen/SettingsButton.custom_minimum_size = SMALL_BUTTON_SIZE
-	$TitleScreen/HelpButton.custom_minimum_size = SMALL_BUTTON_SIZE
-	$TitleScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
-	$TitleScreen/FullscreenButton.custom_minimum_size = SMALL_BUTTON_SIZE
-
-	$SettingsScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
-	$SettingsScreen/HelpButton.custom_minimum_size = SMALL_BUTTON_SIZE
-	$SettingsScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
-	$SettingsScreen/FullscreenButton.custom_minimum_size = SMALL_BUTTON_SIZE
-	$SettingsScreen/VolumeSlider.custom_minimum_size = SMALL_BUTTON_SIZE
-
-	$HelpScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
-
-	game_screen_scene.get_node("CanvasLayer/SettingsButton").custom_minimum_size = SMALL_BUTTON_SIZE
-
-	$GameOverScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
-	$GameOverScreen/PlayAgainButton.custom_minimum_size = LARGE_BUTTON_SIZE
-	
-	# set button positions
-	$TitleScreen/StartGameButton.set_position(Vector2(
-		SCREEN_HORIZONTAL_CENTER - LARGE_BUTTON_SIZE.x / 2,
-		SCREEN_HEIGHT - MARGIN - LARGE_BUTTON_SIZE.y
-	))
-	$TitleScreen/SettingsButton.set_position(Vector2(
-		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
-		MARGIN
-	))
-	$TitleScreen/HelpButton.set_position(Vector2(
-		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x - PADDING - SMALL_BUTTON_SIZE.x,
-		MARGIN
-	))
-	$TitleScreen/ExitButton.set_position(Vector2(
-		MARGIN,
-		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
-	))
-	$TitleScreen/FullscreenButton.set_position(Vector2(
-		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
-		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
-	))
-#
-	$SettingsScreen/BackButton.set_position(Vector2(
-		MARGIN,
-		MARGIN
-	))
-	$SettingsScreen/HelpButton.set_position(Vector2(
-		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
-		MARGIN
-	))
-	$SettingsScreen/ExitButton.set_position(Vector2(
-		MARGIN,
-		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
-	))
-	$SettingsScreen/FullscreenButton.set_position(Vector2(
-		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
-		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
-	))
-	$SettingsScreen/VolumeSlider.set_position(Vector2(
-		SCREEN_HORIZONTAL_CENTER - $SettingsScreen/VolumeSlider.size.x / 2,
-		$SettingsScreen/VolumeSlider.position.y
-	))
-#
-	$HelpScreen/BackButton.set_position(Vector2(
-		MARGIN,
-		MARGIN
-	))
-#
-	game_screen_scene.get_node("CanvasLayer/SettingsButton").set_position(Vector2(
-		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
-		MARGIN
-	))
-#
-	$GameOverScreen/ExitButton.set_position(Vector2(
-		MARGIN,
-		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
-	))
-	$GameOverScreen/PlayAgainButton.set_position(Vector2(
-		SCREEN_HORIZONTAL_CENTER - LARGE_BUTTON_SIZE.x / 2,
-		SCREEN_HEIGHT - MARGIN - LARGE_BUTTON_SIZE.y
-	))
+	# set button size and locations
+	set_button_size_and_locations()
 	
 	# connect button signals
 	$TitleScreen/StartGameButton.connect("pressed", self._on_start_game_button_pressed)
@@ -254,11 +170,106 @@ func _on_play_again_pressed() -> void:
 	game_screen_scene.get_node("CanvasLayer/SettingsButton").connect("pressed", self._on_game_settings_button_pressed)
 	add_child(game_screen_scene)
 	
+	set_button_size_and_locations()
+	
 	$TitleScreen.show()
 	$SettingsScreen.hide()
 	$HelpScreen.hide()
 	game_screen_scene.hide()
 	$GameOverScreen.hide()
+	
+func set_button_size_and_locations():
+	# set button sizes
+	const SMALL_BUTTON_SIZE = Vector2(300, 200)
+	const MEDIUM_BUTTON_SIZE = Vector2(600, 200)
+	const LARGE_BUTTON_SIZE = Vector2(1200, 200)
+	const MARGIN = 60
+	const PADDING = 30
+	var SCREEN_WIDTH = get_viewport().get_visible_rect().size.x
+	var SCREEN_HEIGHT = get_viewport().get_visible_rect().size.y
+	var SCREEN_HORIZONTAL_CENTER = SCREEN_WIDTH / 2
+	var SCREEN_VERTICAL_CENTER = SCREEN_HEIGHT / 2
+	
+	$TitleScreen/StartGameButton.custom_minimum_size = LARGE_BUTTON_SIZE
+	$TitleScreen/SettingsButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$TitleScreen/HelpButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$TitleScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$TitleScreen/FullscreenButton.custom_minimum_size = SMALL_BUTTON_SIZE
+
+	$SettingsScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$SettingsScreen/HelpButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$SettingsScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$SettingsScreen/FullscreenButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$SettingsScreen/VolumeSlider.custom_minimum_size = SMALL_BUTTON_SIZE
+
+	$HelpScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
+
+	game_screen_scene.get_node("CanvasLayer/SettingsButton").custom_minimum_size = SMALL_BUTTON_SIZE
+
+	$GameOverScreen/ExitButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	$GameOverScreen/PlayAgainButton.custom_minimum_size = LARGE_BUTTON_SIZE
+	
+	# set button positions
+	$TitleScreen/StartGameButton.set_position(Vector2(
+		SCREEN_HORIZONTAL_CENTER - LARGE_BUTTON_SIZE.x / 2,
+		SCREEN_HEIGHT - MARGIN - LARGE_BUTTON_SIZE.y
+	))
+	$TitleScreen/SettingsButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		MARGIN
+	))
+	$TitleScreen/HelpButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x - PADDING - SMALL_BUTTON_SIZE.x,
+		MARGIN
+	))
+	$TitleScreen/ExitButton.set_position(Vector2(
+		MARGIN,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+	$TitleScreen/FullscreenButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+#
+	$SettingsScreen/BackButton.set_position(Vector2(
+		MARGIN,
+		MARGIN
+	))
+	$SettingsScreen/HelpButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		MARGIN
+	))
+	$SettingsScreen/ExitButton.set_position(Vector2(
+		MARGIN,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+	$SettingsScreen/FullscreenButton.set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+	$SettingsScreen/VolumeSlider.set_position(Vector2(
+		SCREEN_HORIZONTAL_CENTER - $SettingsScreen/VolumeSlider.size.x / 2,
+		$SettingsScreen/VolumeSlider.position.y
+	))
+#
+	$HelpScreen/BackButton.set_position(Vector2(
+		MARGIN,
+		MARGIN
+	))
+#
+	game_screen_scene.get_node("CanvasLayer/SettingsButton").set_position(Vector2(
+		SCREEN_WIDTH - MARGIN - SMALL_BUTTON_SIZE.x,
+		MARGIN
+	))
+#
+	$GameOverScreen/ExitButton.set_position(Vector2(
+		MARGIN,
+		SCREEN_HEIGHT - MARGIN - SMALL_BUTTON_SIZE.y
+	))
+	$GameOverScreen/PlayAgainButton.set_position(Vector2(
+		SCREEN_HORIZONTAL_CENTER - LARGE_BUTTON_SIZE.x / 2,
+		SCREEN_HEIGHT - MARGIN - LARGE_BUTTON_SIZE.y
+	))
 	
 func on_game_over(points: int) -> void:
 	var high_score
