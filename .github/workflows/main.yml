@@ -37,15 +37,7 @@ on:
         options:
           - 'true'
           - 'false'
-      ios-export:
-        description: 'Deploy iOS'
-        required: false
-        default: 'false'
-        type: choice
-        options:
-          - 'true'
-          - 'false'
-      
+
 permissions:
   contents: write
 
@@ -191,17 +183,3 @@ jobs:
         with:
           name: android
           path: build/android
-  export-ios:
-    name: IOS Export
-    if: "${{ github.event.inputs.ios-export == 'true' }}"
-    runs-on: ubuntu-20.04
-    container:
-      image: barichello/godot-ci:4.2.1
-    steps:
-      - name: Export and upload to Testflight
-        uses: dulvui/godot-ios-upload@v4
-        with:
-          project-name: FutsalManager
-          apple-id-username: ${{ secrets.IOS_APPLE_ID_USERNAME }}
-          apple-id-password: ${{ secrets.IOS_APPLE_ID_PASSWORD }}
-        
