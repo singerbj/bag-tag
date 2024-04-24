@@ -75,3 +75,4 @@ jobs:
           provision-profile-path: ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
           apple-id-username: $IOS_APPLE_ID_USERNAME
           apple-id-password: $IOS_APPLE_ID_PASSWORD
+          godot-version: 4.2.2
