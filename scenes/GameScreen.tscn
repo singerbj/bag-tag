@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://jmx1682k0vdg"]
+[gd_scene load_steps=9 format=3 uid="uid://xtgdl26vbrlg"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_34f43"]
 [ext_resource type="PackedScene" uid="uid://bm1moac027y38" path="res://scenes/Collision2DRendered.tscn" id="2_7n24l"]
