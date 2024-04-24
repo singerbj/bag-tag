@@ -5,24 +5,48 @@ on:
       - main
   workflow_dispatch:
     inputs:
-      build-ios:
-        description: 'Build iOS'
+      build-windows:
+        description: 'Build Windows'
         required: false
         default: 'false'
         type: choice
         options:
           - 'true'
           - 'false'
-      deploy-ios:
-        description: 'Deploy iOS'
+      build-linux:
+        description: 'Build Linux'
         required: false
         default: 'false'
         type: choice
         options:
           - 'true'
           - 'false'
-      deploy-android:
+      build-web:
+        description: 'Build Web'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      build-mac:
+        description: 'Build Mac'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      export-android:
         description: 'Deploy Android'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      export-ios:
+        description: 'Deploy iOS'
         required: false
         default: 'false'
         type: choice
@@ -41,6 +65,7 @@ env:
 jobs:
   export-windows:
     name: Windows Export
+    if: "${{ github.event.inputs.windows-export == 'true' }}"
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.2.1
@@ -66,6 +91,7 @@ jobs:
 
   export-linux:
     name: Linux Export
+    if: "${{ github.event.inputs.linux-export == 'true' }}"
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.2.1
@@ -91,6 +117,7 @@ jobs:
 
   export-web:
     name: Web Export
+    if: "${{ github.event.inputs.web-export == 'true' }}"
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.2.1
@@ -124,6 +151,7 @@ jobs:
 
   export-mac:
     name: Mac Export
+    if: "${{ github.event.inputs.mac-export == 'true' }}"
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.2.1
@@ -149,6 +177,7 @@ jobs:
 
   export-android:
     name: Android Export
+    if: "${{ github.event.inputs.android-export == 'true' }}"
     runs-on: ubuntu-20.04
     container:
       image: barichello/godot-ci:4.2.1
@@ -171,3 +200,18 @@ jobs:
         with:
           name: android
           path: build/android
+  export-ios:
+    name: IOS Export
+    if: "${{ github.event.inputs.ios-export == 'true' }}"
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.2.1
+    steps:
+      - name: Export and upload to Testflight
+        uses: dulvui/godot-ios-upload@v4
+        with:
+          project-name: FutsalManager
+          provision-profile-path: ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
+          apple-id-username: ${{ secrets.IOS_APPLE_ID_USERNAME }}
+          apple-id-password: ${{ secrets.IOS_APPLE_ID_PASSWORD }}
+        
