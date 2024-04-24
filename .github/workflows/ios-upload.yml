@@ -63,8 +63,10 @@ jobs:
       #     cp game/export_presets.ios.example game/export_presets.cfg
       #     sed -i -e "s|VERSION_CODE|$VERSION|g" ./export_presets.cfg
       #     sed -i -e "s|VERSION_NAME|$VERSION|g" ./export_presets.cfg
-      #     sed -i -e "s|IOS_SHORT_VERSION|$VERSION|g" ./export_presets.cfg
-      #     sed -i -e "s|IOS_VERSION|$VERSION|g" ./export_presets.cfg
+      - name: Config export_presets.cfg
+        run: |
+          sed -i -e "s|SHORT_VERSION|$VERSION|g" ./export_presets.cfg
+          sed -i -e "s|VERSION|$VERSION|g" ./export_presets.cfg
 
       - name: Export and upload to Testflight
         uses: dulvui/godot-ios-upload@v1.1.2
