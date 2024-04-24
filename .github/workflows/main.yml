@@ -5,6 +5,14 @@ on:
       - main
   workflow_dispatch:
     inputs:
+      build-web:
+        description: 'Build Web'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
       build-windows:
         description: 'Build Windows'
         required: false
@@ -15,14 +23,6 @@ on:
           - 'false'
       build-linux:
         description: 'Build Linux'
-        required: false
-        default: 'false'
-        type: choice
-        options:
-          - 'true'
-          - 'false'
-      build-web:
-        description: 'Build Web'
         required: false
         default: 'false'
         type: choice
