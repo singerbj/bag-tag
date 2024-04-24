@@ -61,7 +61,7 @@ jobs:
       # - name: Create and config export_presets.cfg
       #   run: |
       #     cp game/export_presets.ios.example game/export_presets.cfg
-      #     sed -i -e "s|VERSION_CODE|$VERSION|g" ./export_presets.cfg
+      #     sed -i -e "s|VERSION_CODE|$VERSION|g" g./export_presets.cfg
       #     sed -i -e "s|VERSION_NAME|$VERSION|g" ./export_presets.cfg
       - name: Config export_presets.cfg
         run: |
@@ -69,7 +69,7 @@ jobs:
           sed -i -e "s|VERSION|$VERSION|g" ./export_presets.cfg
 
       - name: Export and upload to Testflight
-        uses: dulvui/godot-ios-upload@v1.1.2
+        uses: dulvui/godot-ios-upload@v4
         with:
           project-name: $PROJECT_NAME
           provision-profile-path: ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
