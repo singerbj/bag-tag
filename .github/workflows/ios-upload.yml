@@ -14,8 +14,7 @@ on:
           - 'false'
 
 env:
-  PROJECT_NAME: PocketBroomball
-  WORKING_DIRECTORY: game
+  PROJECT_NAME: BagTag
   IOS_APPLE_ID_USERNAME: ${{ secrets.IOS_APPLE_ID_USERNAME }}
   IOS_APPLE_ID_PASSWORD: ${{ secrets.IOS_APPLE_ID_PASSWORD }}
   BUILD_CERTIFICATE_BASE64: ${{ secrets.IOS_BUILD_CERTIFICATE_BASE64 }}
@@ -59,18 +58,17 @@ jobs:
       - name: Set version and short version
         run: echo "VERSION=$(cat version | cut -f1 -d-)" >> $GITHUB_ENV
 
-      - name: Create and config export_presets.cfg
-        run: |
-          cp game/export_presets.ios.example game/export_presets.cfg
-          sed -i -e "s|VERSION_CODE|$VERSION|g" $WORKING_DIRECTORY/export_presets.cfg
-          sed -i -e "s|VERSION_NAME|$VERSION|g" $WORKING_DIRECTORY/export_presets.cfg
-          sed -i -e "s|IOS_SHORT_VERSION|$VERSION|g" $WORKING_DIRECTORY/export_presets.cfg
-          sed -i -e "s|IOS_VERSION|$VERSION|g" $WORKING_DIRECTORY/export_presets.cfg
+      # - name: Create and config export_presets.cfg
+      #   run: |
+      #     cp game/export_presets.ios.example game/export_presets.cfg
+      #     sed -i -e "s|VERSION_CODE|$VERSION|g" ./export_presets.cfg
+      #     sed -i -e "s|VERSION_NAME|$VERSION|g" ./export_presets.cfg
+      #     sed -i -e "s|IOS_SHORT_VERSION|$VERSION|g" ./export_presets.cfg
+      #     sed -i -e "s|IOS_VERSION|$VERSION|g" ./export_presets.cfg
 
       - name: Export and upload to Testflight
         uses: dulvui/godot-ios-upload@v1.1.2
         with:
-          working-directory: $WORKING_DIRECTORY
           project-name: $PROJECT_NAME
           provision-profile-path: ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
           apple-id-username: $IOS_APPLE_ID_USERNAME
