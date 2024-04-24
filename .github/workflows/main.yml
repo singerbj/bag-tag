@@ -55,7 +55,7 @@ env:
   PROJECT_PATH: ./
 
 jobs:
-  export-web:
+  gexport-web:
     name: Web Export
     runs-on: ubuntu-20.04
     container:
@@ -202,7 +202,6 @@ jobs:
         uses: dulvui/godot-ios-upload@v4
         with:
           project-name: FutsalManager
-          provision-profile-path: ~/Library/MobileDevice/Provisioning\ Profiles/build_pp.mobileprovision
           apple-id-username: ${{ secrets.IOS_APPLE_ID_USERNAME }}
           apple-id-password: ${{ secrets.IOS_APPLE_ID_PASSWORD }}
         
