@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xtgdl26vbrlg"]
+[gd_scene load_steps=9 format=3 uid="uid://dor1u25rhve5v"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_34f43"]
 [ext_resource type="PackedScene" uid="uid://bm1moac027y38" path="res://scenes/Collision2DRendered.tscn" id="2_7n24l"]
@@ -7,10 +7,10 @@
 [ext_resource type="AudioStream" uid="uid://d2avgh2wvmu0y" path="res://assets/audio/theme.mp3" id="5_7lb58"]
 [ext_resource type="AudioStream" uid="uid://b8vm21ptv63ms" path="res://assets/audio/ding.mp3" id="6_xwjf2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajw7r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nx8tw"]
 size = Vector2(6000, 134)
 
-[sub_resource type="Theme" id="Theme_ahys2"]
+[sub_resource type="Theme" id="Theme_05ipv"]
 default_font_size = 50
 
 [node name="GameScreen" type="Node2D"]
@@ -25,7 +25,7 @@ position = Vector2(452, 1339)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Floor"]
 position = Vector2(1048.5, -56)
-shape = SubResource("RectangleShape2D_ajw7r")
+shape = SubResource("RectangleShape2D_nx8tw")
 metadata/_edit_lock_ = true
 
 [node name="Collision2dRendered" parent="Game/Floor/CollisionShape2D" instance=ExtResource("2_7n24l")]
@@ -39,7 +39,7 @@ position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 
 [node name="Player" parent="Game" instance=ExtResource("4_5bjoq")]
-position = Vector2(442, 938)
+position = Vector2(482, 880)
 
 [node name="MusicAudioStreamPlayer" type="AudioStreamPlayer" parent="Game"]
 stream = ExtResource("5_7lb58")
@@ -55,9 +55,9 @@ offset_left = 2704.0
 offset_top = 42.0
 offset_right = 2906.0
 offset_bottom = 119.0
-theme = SubResource("Theme_ahys2")
-text = "Settings
-"
+theme = SubResource("Theme_05ipv")
+text = "Settings"
+metadata/_edit_use_anchors_ = true
 
 [node name="ScoreLabel" type="RichTextLabel" parent="CanvasLayer"]
 offset_left = 61.0
@@ -68,3 +68,4 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 30
 theme_override_font_sizes/normal_font_size = 100
 text = "0 points"
+metadata/_edit_use_anchors_ = true

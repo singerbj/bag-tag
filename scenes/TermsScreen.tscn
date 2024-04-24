@@ -46,6 +46,7 @@ text = "To play this game, you must agree to our "
 fit_content = true
 
 [node name="LinkButton" type="LinkButton" parent="."]
+layout_mode = 0
 offset_left = 1776.0
 offset_top = 641.0
 offset_right = 2673.0
@@ -56,6 +57,7 @@ text = "Terms and Conditions"
 uri = "https://github.com/singerbj/bag-tag/blob/main/TERMS_AND_CONDITIONS.md"
 
 [node name="IAcceptButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 879.0
 offset_top = 1066.0
 offset_right = 1160.0

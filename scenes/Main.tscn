@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://42qq4ke7te0s" path="res://scenes/TitleScreen.tscn" id="1_sc5co"]
 [ext_resource type="PackedScene" uid="uid://cnr3v8uui8gwm" path="res://scenes/SettingsScreen.tscn" id="2_uw7i2"]
 [ext_resource type="PackedScene" uid="uid://trke8ta7a50i" path="res://scenes/HelpScreen.tscn" id="3_dl76g"]
-[ext_resource type="PackedScene" uid="uid://jmx1682k0vdg" path="res://scenes/GameScreen.tscn" id="4_n1bl8"]
+[ext_resource type="PackedScene" uid="uid://dor1u25rhve5v" path="res://scenes/GameScreen.tscn" id="4_n1bl8"]
 [ext_resource type="PackedScene" uid="uid://bgdxjiqlqtl8g" path="res://scenes/GameOverScreen.tscn" id="5_3r1bu"]
 [ext_resource type="PackedScene" uid="uid://cui3v6mljb7tw" path="res://scenes/TermsScreen.tscn" id="7_2g3kn"]
 
