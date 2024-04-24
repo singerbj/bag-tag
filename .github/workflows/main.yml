@@ -5,7 +5,7 @@ on:
       - main
   workflow_dispatch:
     inputs:
-      build-windows:
+      windows-export:
         description: 'Build Windows'
         required: false
         default: 'false'
@@ -13,7 +13,7 @@ on:
         options:
           - 'true'
           - 'false'
-      build-linux:
+      linux-export:
         description: 'Build Linux'
         required: false
         default: 'false'
@@ -21,7 +21,7 @@ on:
         options:
           - 'true'
           - 'false'
-      build-mac:
+      mac-export:
         description: 'Build Mac'
         required: false
         default: 'false'
@@ -29,7 +29,7 @@ on:
         options:
           - 'true'
           - 'false'
-      export-android:
+      android-export:
         description: 'Deploy Android'
         required: false
         default: 'false'
@@ -37,7 +37,7 @@ on:
         options:
           - 'true'
           - 'false'
-      export-ios:
+      ios-export:
         description: 'Deploy iOS'
         required: false
         default: 'false'
