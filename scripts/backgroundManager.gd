@@ -54,6 +54,5 @@ func _add_background() -> void:
 	add_child(new_sprite)
 	new_sprite.scale = Vector2(BKRD_SCALE, BKRD_SCALE)
 	new_sprite.position.x = next_background_x + (BKRD_WIDTH / 2)
-	print("new_sprite.position.x", new_sprite.position.x)
 	new_sprite.position.y = (BKRD_HEIGHT / 2) - BKRD_OFFSET
 	next_background_x += (BKRD_WIDTH * BKRD_SCALE * 2) - 300
