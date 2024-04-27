@@ -4,7 +4,7 @@ const BKRD_SCALE = 1.25
 const BKRD_WIDTH = 1080
 const BKRD_HEIGHT = 1920
 const BKRD_OFFSET = 285
-const MIN_BKRDS = 6
+const MIN_BKRDS = 10
 
 var Blank = preload("res://assets/art/Blank.PNG")
 var BlankDoor = preload("res://assets/art/BlankDoor.PNG")
@@ -22,7 +22,7 @@ var backgroundTextures = [
 	WindowsWithStuff,
 	Windows
 ]
-var next_background_x = -1920 * 3
+var next_background_x = -BKRD_WIDTH * 5
 var game_scene
 var player_scene
 var last_picked_bkrd = backgroundTextures[0]
@@ -33,7 +33,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	for child in get_children():
-		if (player_scene.position.x - child.position.x) > BKRD_WIDTH * BKRD_SCALE * 2:
+		if (player_scene.position.x - child.position.x) > BKRD_WIDTH * BKRD_SCALE * 10:
 			child.queue_free()
 		else:
 			child.position.x += delta * 100
@@ -54,5 +54,6 @@ func _add_background() -> void:
 	add_child(new_sprite)
 	new_sprite.scale = Vector2(BKRD_SCALE, BKRD_SCALE)
 	new_sprite.position.x = next_background_x + (BKRD_WIDTH / 2)
+	print("new_sprite.position.x", new_sprite.position.x)
 	new_sprite.position.y = (BKRD_HEIGHT / 2) - BKRD_OFFSET
 	next_background_x += (BKRD_WIDTH * BKRD_SCALE * 2) - 300
