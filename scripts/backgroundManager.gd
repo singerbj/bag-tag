@@ -4,7 +4,7 @@ const BKRD_SCALE = 1.25
 const BKRD_WIDTH = 1080
 const BKRD_HEIGHT = 1920
 const BKRD_OFFSET = 285
-const MIN_BKRDS = 5
+const MIN_BKRDS = 6
 
 var Blank = preload("res://assets/art/Blank.PNG")
 var BlankDoor = preload("res://assets/art/BlankDoor.PNG")
@@ -22,7 +22,7 @@ var backgroundTextures = [
 	WindowsWithStuff,
 	Windows
 ]
-var next_background_x = -1920
+var next_background_x = -1920 * 3
 var game_scene
 var player_scene
 var last_picked_bkrd = backgroundTextures[0]
@@ -37,12 +37,12 @@ func _process(delta: float) -> void:
 			child.queue_free()
 		else:
 			child.position.x += delta * 100
-			
-	next_background_x += delta * 100
 		
 	if get_child_count() < MIN_BKRDS:
 		for i in (MIN_BKRDS - get_child_count()):
 			_add_background()
+			
+	next_background_x += delta * 100
 		
 func _add_background() -> void:
 	var new_sprite = Sprite2D.new()
