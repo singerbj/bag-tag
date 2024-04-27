@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://42qq4ke7te0s"]
+[gd_scene load_steps=8 format=3 uid="uid://42qq4ke7te0s"]
 
 [ext_resource type="Theme" uid="uid://cw2jrsfudbjvg" path="res://default_theme.tres" id="1_clfqb"]
 [ext_resource type="Texture2D" uid="uid://c3wki3kjoisgc" path="res://assets/art/logo_transparent.PNG" id="2_3quqd"]
+[ext_resource type="Shader" path="res://shaders/logo.gdshader" id="2_ohgnl"]
 
 [sub_resource type="Theme" id="Theme_1ea38"]
 default_font_size = 50
@@ -11,6 +12,11 @@ default_font_size = 50
 
 [sub_resource type="Theme" id="Theme_py6c5"]
 default_font_size = 50
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nh4jm"]
+shader = ExtResource("2_ohgnl")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/line_thickness = 10.0
 
 [node name="TitleScreen" type="Panel"]
 offset_left = -2.0
@@ -68,6 +74,7 @@ theme = SubResource("Theme_py6c5")
 text = "Fullscreen"
 
 [node name="Logo" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nh4jm")
 position = Vector2(1500, 548)
 scale = Vector2(0.889648, 0.889648)
 texture = ExtResource("2_3quqd")
