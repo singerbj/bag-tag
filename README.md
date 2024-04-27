@@ -1,3 +1,5 @@
+![Bag Tag Logo](/assets/art/logo.png)
+
 # Bag Tag - An Airport Adventure
 
 Tag those bags! Avoid squishing your family! Keep on going!
