@@ -26,7 +26,7 @@ var last_game_objects = []
 var last_pause = 0
 var points = 0
 var game_object_scenes = GAME_OBJECT_SCENES.duplicate()
-var first_game_object
+var last_game_object : PackedScene
 
 var game_objects = []
 
@@ -42,7 +42,7 @@ var current_game_state = GameState.Paused
 func _ready() -> void:
 	get_parent().get_node("CanvasLayer").hide()
 	game_object_scenes.shuffle()
-	first_game_object = game_object_scenes[0]
+	last_game_object = game_object_scenes[game_object_scenes.size() - 1]
 
 func _process(_delta: float) -> void:
 	var current_time = Time.get_unix_time_from_system()
@@ -65,9 +65,9 @@ func _process(_delta: float) -> void:
 				last_game_objects = []
 				game_object_scenes = GAME_OBJECT_SCENES.duplicate()
 				game_object_scenes.shuffle()
-				while game_object_scenes[0] != first_game_object:
+				while game_object_scenes[0] == last_game_object:
 					game_object_scenes.shuffle()
-				first_game_object = game_object_scenes[0]
+				last_game_object = game_object_scenes[game_object_scenes.size() - 1]
 				
 			while last_game_objects.has(new_last_game_object):
 				new_last_game_object += 1
