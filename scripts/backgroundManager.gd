@@ -3,7 +3,8 @@ extends Node
 const BKRD_SCALE = 1.25
 const BKRD_WIDTH = 1080
 const BKRD_HEIGHT = 1920
-const BKRD_OFFSET = 285
+const BKRD_OFFSET_X = 320
+const BKRD_OFFSET_Y = 285
 const MIN_BKRDS = 10
 
 var Blank = preload("res://assets/art/Blank.PNG")
@@ -54,5 +55,5 @@ func _add_background() -> void:
 	add_child(new_sprite)
 	new_sprite.scale = Vector2(BKRD_SCALE, BKRD_SCALE)
 	new_sprite.position.x = next_background_x + (BKRD_WIDTH / 2)
-	new_sprite.position.y = (BKRD_HEIGHT / 2) - BKRD_OFFSET
-	next_background_x += (BKRD_WIDTH * BKRD_SCALE * 2) - 300
+	new_sprite.position.y = (BKRD_HEIGHT / 2) - BKRD_OFFSET_Y
+	next_background_x += (BKRD_WIDTH * BKRD_SCALE * 2) - BKRD_OFFSET_X
