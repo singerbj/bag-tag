@@ -114,7 +114,7 @@ func _get_game_object_variation_range():
 func _should_apply_random_rotation():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	return rng.randi_range(0, 100) > 98
+	return rng.randi_range(0, 100) > 95
 
 func _get_random_force():
 	var rng = RandomNumberGenerator.new()
