@@ -47,9 +47,9 @@ fit_content = true
 
 [node name="LinkButton" type="LinkButton" parent="."]
 layout_mode = 0
-offset_left = 1776.0
+offset_left = 1783.0
 offset_top = 641.0
-offset_right = 2673.0
+offset_right = 2680.0
 offset_bottom = 961.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60

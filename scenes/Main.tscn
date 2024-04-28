@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://t8n3u8q7t8t8"]
+[gd_scene load_steps=9 format=3 uid="uid://t8n3u8q7t8t8"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_1qesj"]
 [ext_resource type="PackedScene" uid="uid://42qq4ke7te0s" path="res://scenes/TitleScreen.tscn" id="1_sc5co"]
@@ -7,22 +7,39 @@
 [ext_resource type="PackedScene" uid="uid://dor1u25rhve5v" path="res://scenes/GameScreen.tscn" id="4_n1bl8"]
 [ext_resource type="PackedScene" uid="uid://bgdxjiqlqtl8g" path="res://scenes/GameOverScreen.tscn" id="5_3r1bu"]
 [ext_resource type="PackedScene" uid="uid://cui3v6mljb7tw" path="res://scenes/TermsScreen.tscn" id="7_2g3kn"]
+[ext_resource type="PackedScene" uid="uid://buf4hap7rc38r" path="res://scenes/InititalHelpScreen.tscn" id="8_bfb15"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_1qesj")
 
 [node name="TitleScreen" parent="." instance=ExtResource("1_sc5co")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 3000.0
+offset_bottom = 1350.0
 
 [node name="SettingsScreen" parent="." instance=ExtResource("2_uw7i2")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 3000.0
+offset_bottom = 1350.0
 
 [node name="HelpScreen" parent="." instance=ExtResource("3_dl76g")]
+offset_right = 3000.0
+offset_bottom = 1350.0
 
 [node name="GameScreen" parent="." instance=ExtResource("4_n1bl8")]
 
 [node name="GameOverScreen" parent="." instance=ExtResource("5_3r1bu")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 3000.0
+offset_bottom = 1350.0
 
 [node name="TermsScreen" parent="." instance=ExtResource("7_2g3kn")]
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 3026.0
-offset_bottom = 1376.0
+offset_right = 3000.0
+offset_bottom = 1350.0
+
+[node name="InitialHelpScreen" parent="." instance=ExtResource("8_bfb15")]
+offset_right = 3000.0
+offset_bottom = 1350.0

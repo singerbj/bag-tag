@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://buf4hap7rc38r"]
+
+[sub_resource type="Theme" id="Theme_jnij0"]
+default_font_size = 200
+
+[sub_resource type="Theme" id="Theme_udfuj"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_fi7oh"]
+default_font_size = 50
+
+[node name="InitialHelpScreen" type="Panel"]
+offset_right = 3028.0
+offset_bottom = 1378.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 941.0
+offset_top = 49.0
+offset_right = 2094.0
+offset_bottom = 374.0
+theme = SubResource("Theme_jnij0")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "How to Play"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 51.0
+offset_top = 42.0
+offset_right = 177.0
+offset_bottom = 121.0
+theme = SubResource("Theme_udfuj")
+text = "Back
+"
+
+[node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
+offset_left = 548.0
+offset_top = 483.0
+offset_right = 3169.0
+offset_bottom = 1492.0
+theme = SubResource("Theme_jnij0")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 70
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+bbcode_enabled = true
+text = "[b]How to Play:[/b]
+1. Tag those bags!
+2. Avoid squishing your family!
+3. Keep on going!"
+
+[node name="HelpDescriptionLabel2" type="RichTextLabel" parent="."]
+offset_left = 1581.0
+offset_top = 490.0
+offset_right = 4202.0
+offset_bottom = 1499.0
+theme = SubResource("Theme_jnij0")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 70
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+bbcode_enabled = true
+text = "[b]Mobile Controls[/b]:
+Tap to Jump and Swipe Right to Dash
+
+[b]Keyboard Controls:[/b] 
+Up Arrow to Jump and Right Arrow to Dash"
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 879.0
+offset_top = 1066.0
+offset_right = 1160.0
+offset_bottom = 1143.0
+theme = SubResource("Theme_fi7oh")
+text = "Play"

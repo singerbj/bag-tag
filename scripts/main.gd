@@ -56,15 +56,17 @@ func _ready() -> void:
 		$TitleScreen/FullscreenButton.hide()
 		$SettingsScreen/FullscreenButton.hide()
 	
+	
+	# set button size and locations
+	set_button_size_and_locations()
+	
 	$TitleScreen.show()
 	$SettingsScreen.hide()
 	$HelpScreen.hide()
 	game_screen_scene.hide()
 	$GameOverScreen.hide()
 	$TermsScreen.hide()
-	
-	# set button size and locations
-	set_button_size_and_locations()
+	$InitialHelpScreen.hide()
 	
 	# connect button signals
 	$TitleScreen/StartGameButton.connect("pressed", self._on_start_game_button_pressed)
@@ -75,6 +77,9 @@ func _ready() -> void:
 	
 	$TermsScreen/IAcceptButton.connect("pressed", self._on_i_accept_button_pressed)
 	$TermsScreen/BackButton.connect("pressed", self._on_terms_back_button_pressed)
+	
+	$InitialHelpScreen/PlayButton.connect("pressed", self._on_ihelp_play_button_pressed)
+	$InitialHelpScreen/BackButton.connect("pressed", self._on_ihelp_back_button_pressed)
 	
 	$SettingsScreen/BackButton.connect("pressed", self._on_settings_back_button_pressed)
 	$SettingsScreen/HelpButton.connect("pressed", self._on_help_button_pressed)
@@ -191,14 +196,22 @@ func _on_i_accept_button_pressed():
 	config.set_value("main", "terms_accepted", true)
 	config.save(SETTINGS_FILE_PATH)	
 	
-	_init_volume()
-	$TitleScreen.hide()
 	$TermsScreen.hide()
-	game_screen_scene.show()
-	game_scene.start_game()
+	$InitialHelpScreen.show()
 
 func _on_terms_back_button_pressed():
 	$TermsScreen.hide()
+	$TitleScreen.show()
+	
+func _on_ihelp_play_button_pressed():
+	_init_volume()
+	$TitleScreen.hide()
+	$InitialHelpScreen.hide()
+	game_screen_scene.show()
+	game_scene.start_game()
+	
+func _on_ihelp_back_button_pressed():
+	$InitialHelpScreen.hide()
 	$TitleScreen.show()
 	
 func set_button_size_and_locations():
@@ -221,6 +234,9 @@ func set_button_size_and_locations():
 	
 	$TermsScreen/IAcceptButton.custom_minimum_size = LARGE_BUTTON_SIZE
 	$TermsScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
+	
+	$InitialHelpScreen/PlayButton.custom_minimum_size = LARGE_BUTTON_SIZE
+	$InitialHelpScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
 
 	$SettingsScreen/BackButton.custom_minimum_size = SMALL_BUTTON_SIZE
 	$SettingsScreen/HelpButton.custom_minimum_size = SMALL_BUTTON_SIZE
@@ -262,6 +278,15 @@ func set_button_size_and_locations():
 		SCREEN_HEIGHT - MARGIN - LARGE_BUTTON_SIZE.y
 	))
 	$TermsScreen/BackButton.set_position(Vector2(
+		MARGIN,
+		MARGIN
+	))
+	
+	$InitialHelpScreen/PlayButton.set_position(Vector2(
+		SCREEN_HORIZONTAL_CENTER - LARGE_BUTTON_SIZE.x / 2,
+		SCREEN_HEIGHT - MARGIN - LARGE_BUTTON_SIZE.y
+	))
+	$InitialHelpScreen/BackButton.set_position(Vector2(
 		MARGIN,
 		MARGIN
 	))
