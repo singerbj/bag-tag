@@ -27,3 +27,6 @@ mono_crash.*.json
 *.xcodeproj/*
 BagTag/
 *.xcframework/*
+
+*.apk
+*.idsig
