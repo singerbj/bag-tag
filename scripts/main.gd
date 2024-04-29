@@ -193,6 +193,7 @@ func _on_play_again_pressed() -> void:
 	$GameOverScreen.hide()
 	
 func _on_i_accept_button_pressed():
+	print("_on_i_accept_button_pressed")
 	config.set_value("main", "terms_accepted", true)
 	config.save(SETTINGS_FILE_PATH)	
 	
@@ -200,10 +201,12 @@ func _on_i_accept_button_pressed():
 	$InitialHelpScreen.show()
 
 func _on_terms_back_button_pressed():
+	print("_on_terms_back_button_pressed")
 	$TermsScreen.hide()
 	$TitleScreen.show()
 	
 func _on_ihelp_play_button_pressed():
+	print("_on_terms_back_button_pressed")
 	_init_volume()
 	$TitleScreen.hide()
 	$InitialHelpScreen.hide()
@@ -211,6 +214,7 @@ func _on_ihelp_play_button_pressed():
 	game_scene.start_game()
 	
 func _on_ihelp_back_button_pressed():
+	print("_on_ihelp_back_button_pressed")
 	$InitialHelpScreen.hide()
 	$TitleScreen.show()
 	

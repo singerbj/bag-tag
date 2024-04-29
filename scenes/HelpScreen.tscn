@@ -33,6 +33,21 @@ text = "Back
 "
 
 [node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
+offset_left = 241.0
+offset_top = 432.0
+offset_right = 2801.0
+offset_bottom = 1441.0
+theme = SubResource("Theme_t1ebu")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 70
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+bbcode_enabled = true
+text = "It's been a long winter and you're trying to get to Florida... but Ben's throwing a tantrum, Jaggie are goofing off, Gigi's napping, Bina has to finish her chapter, and Dad's lollygagging. Hurry up and get to your gate!"
+
+[node name="HelpDescriptionLabel2" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 551.0
 offset_top = 680.0
@@ -47,14 +62,14 @@ theme_override_font_sizes/bold_italics_font_size = 60
 theme_override_font_sizes/mono_font_size = 60
 bbcode_enabled = true
 text = "[b]How to Play:[/b]
-1. Tag those bags!
+1. Tag those bags - suitcases and backpacks!
 2. Avoid squishing your family!
 3. Keep on going!
 
 
 [b]Made with        by B&G[/b]"
 
-[node name="HelpDescriptionLabel2" type="RichTextLabel" parent="."]
+[node name="HelpDescriptionLabel3" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 1669.0
 offset_top = 657.0

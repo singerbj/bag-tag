@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://buf4hap7rc38r"]
+[gd_scene load_steps=6 format=3 uid="uid://buf4hap7rc38r"]
 
 [sub_resource type="Theme" id="Theme_jnij0"]
 default_font_size = 200
 
 [sub_resource type="Theme" id="Theme_udfuj"]
 default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_giaje"]
+default_font_size = 200
+
+[sub_resource type="Theme" id="Theme_i0m16"]
+default_font_size = 200
 
 [sub_resource type="Theme" id="Theme_fi7oh"]
 default_font_size = 50
@@ -33,13 +39,12 @@ theme = SubResource("Theme_udfuj")
 text = "Back
 "
 
-[node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
+[node name="HelpDescriptionLabel3" type="RichTextLabel" parent="."]
 offset_left = 548.0
-offset_top = 483.0
+offset_top = 646.0
 offset_right = 3169.0
-offset_bottom = 1492.0
-theme = SubResource("Theme_jnij0")
+offset_bottom = 1655.0
+theme = SubResource("Theme_giaje")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
 theme_override_font_sizes/bold_font_size = 70
@@ -48,17 +53,16 @@ theme_override_font_sizes/bold_italics_font_size = 60
 theme_override_font_sizes/mono_font_size = 60
 bbcode_enabled = true
 text = "[b]How to Play:[/b]
-1. Tag those bags!
+1. Tag those bags - suitcases and backpacks!
 2. Avoid squishing your family!
 3. Keep on going!"
 
-[node name="HelpDescriptionLabel2" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 1581.0
-offset_top = 490.0
-offset_right = 4202.0
-offset_bottom = 1499.0
-theme = SubResource("Theme_jnij0")
+[node name="HelpDescriptionLabel4" type="RichTextLabel" parent="."]
+offset_left = 1666.0
+offset_top = 623.0
+offset_right = 4287.0
+offset_bottom = 1632.0
+theme = SubResource("Theme_giaje")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
 theme_override_font_sizes/bold_font_size = 70
@@ -72,11 +76,25 @@ Tap to Jump and Swipe Right to Dash
 [b]Keyboard Controls:[/b] 
 Up Arrow to Jump and Right Arrow to Dash"
 
+[node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
+offset_left = 241.0
+offset_top = 431.0
+offset_right = 2801.0
+offset_bottom = 1440.0
+theme = SubResource("Theme_i0m16")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/bold_font_size = 70
+theme_override_font_sizes/italics_font_size = 60
+theme_override_font_sizes/bold_italics_font_size = 60
+theme_override_font_sizes/mono_font_size = 60
+bbcode_enabled = true
+text = "It's been a long winter and you're trying to get to Florida... but Ben's throwing a tantrum, Jaggie are goofing off, Gigi's napping, Bina has to finish her chapter, and Dad's lollygagging. Hurry up and get to your gate!"
+
 [node name="PlayButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 879.0
-offset_top = 1066.0
-offset_right = 1160.0
-offset_bottom = 1143.0
+offset_left = 1758.0
+offset_top = 2132.0
+offset_right = 2039.0
+offset_bottom = 2209.0
 theme = SubResource("Theme_fi7oh")
 text = "Play"
