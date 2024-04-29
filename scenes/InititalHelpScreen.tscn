@@ -14,6 +14,7 @@ offset_right = 3028.0
 offset_bottom = 1378.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 941.0
 offset_top = 49.0
 offset_right = 2094.0
@@ -23,6 +24,7 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "How to Play"
 
 [node name="BackButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 51.0
 offset_top = 42.0
 offset_right = 177.0
@@ -32,6 +34,7 @@ text = "Back
 "
 
 [node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 483.0
 offset_right = 3169.0
@@ -50,6 +53,7 @@ text = "[b]How to Play:[/b]
 3. Keep on going!"
 
 [node name="HelpDescriptionLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 1581.0
 offset_top = 490.0
 offset_right = 4202.0
@@ -69,6 +73,7 @@ Tap to Jump and Swipe Right to Dash
 Up Arrow to Jump and Right Arrow to Dash"
 
 [node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 879.0
 offset_top = 1066.0
 offset_right = 1160.0
