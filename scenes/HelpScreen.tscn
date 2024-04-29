@@ -14,10 +14,10 @@ offset_bottom = 1378.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1283.0
-offset_top = 55.0
-offset_right = 1740.0
-offset_bottom = 380.0
+offset_left = 1363.0
+offset_top = 140.0
+offset_right = 1669.0
+offset_bottom = 465.0
 theme = SubResource("Theme_t1ebu")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Help"
@@ -34,10 +34,10 @@ text = "Back
 
 [node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 548.0
-offset_top = 371.0
-offset_right = 3169.0
-offset_bottom = 1380.0
+offset_left = 551.0
+offset_top = 680.0
+offset_right = 3172.0
+offset_bottom = 1689.0
 theme = SubResource("Theme_t1ebu")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
@@ -52,17 +52,14 @@ text = "[b]How to Play:[/b]
 3. Keep on going!
 
 
-
-
-
-[b]Made with      by B&G[/b]"
+[b]Made with        by B&G[/b]"
 
 [node name="HelpDescriptionLabel2" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1581.0
-offset_top = 378.0
-offset_right = 4202.0
-offset_bottom = 1387.0
+offset_left = 1669.0
+offset_top = 657.0
+offset_right = 4290.0
+offset_bottom = 1666.0
 theme = SubResource("Theme_t1ebu")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
@@ -78,15 +75,15 @@ Tap to Jump and Swipe Right to Dash
 Up Arrow to Jump and Right Arrow to Dash"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(959, 1186)
+position = Vector2(862, 1177)
 scale = Vector2(0.258621, 0.258621)
 texture = ExtResource("1_kgepc")
 
 [node name="LinkButton" type="LinkButton" parent="."]
 layout_mode = 0
-offset_left = 1595.0
+offset_left = 1670.0
 offset_top = 1123.0
-offset_right = 2492.0
+offset_right = 2567.0
 offset_bottom = 1443.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
@@ -95,9 +92,9 @@ uri = "https://uppbeat.io/track/kevin-macleod/bit-shift"
 
 [node name="EmailButton" type="LinkButton" parent="."]
 layout_mode = 0
-offset_left = 1595.0
+offset_left = 1670.0
 offset_top = 1189.0
-offset_right = 2492.0
+offset_right = 2567.0
 offset_bottom = 1509.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40

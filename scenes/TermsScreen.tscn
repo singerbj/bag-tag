@@ -15,10 +15,10 @@ offset_bottom = 1378.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 447.0
-offset_top = 70.0
-offset_right = 2618.0
-offset_bottom = 395.0
+offset_left = 747.0
+offset_top = 182.0
+offset_right = 2238.0
+offset_bottom = 507.0
 theme = SubResource("Theme_t1ebu")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Terms and Conditions"
@@ -35,10 +35,10 @@ text = "Back
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 layout_mode = 2
-offset_left = 581.0
-offset_top = 641.0
-offset_right = 3344.0
-offset_bottom = 2141.0
+offset_left = 835.0
+offset_top = 691.0
+offset_right = 3598.0
+offset_bottom = 2191.0
 theme = SubResource("Theme_t1ebu")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 60
@@ -47,10 +47,10 @@ fit_content = true
 
 [node name="LinkButton" type="LinkButton" parent="."]
 layout_mode = 0
-offset_left = 1783.0
-offset_top = 641.0
-offset_right = 2680.0
-offset_bottom = 961.0
+offset_left = 1665.0
+offset_top = 691.0
+offset_right = 2562.0
+offset_bottom = 1011.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "Terms and Conditions"
@@ -58,10 +58,10 @@ uri = "https://github.com/singerbj/bag-tag/blob/main/TERMS_AND_CONDITIONS.md"
 
 [node name="IAcceptButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 879.0
-offset_top = 1066.0
-offset_right = 1160.0
-offset_bottom = 1143.0
+offset_left = 1321.0
+offset_top = 1046.0
+offset_right = 1602.0
+offset_bottom = 1123.0
 theme = SubResource("Theme_800lc")
 text = "I Agree
 "

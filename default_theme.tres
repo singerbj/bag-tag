@@ -1,10 +1,17 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cw2jrsfudbjvg"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cw2jrsfudbjvg"]
+
+[ext_resource type="FontFile" uid="uid://cg1mgfjjxesv2" path="res://assets/fonts/BarlowCondensed-Bold.ttf" id="1_fs62b"]
+[ext_resource type="FontFile" uid="uid://c18kjtc5hsfrm" path="res://assets/fonts/BarlowCondensed-BoldItalic.ttf" id="2_3an6b"]
+[ext_resource type="FontFile" uid="uid://dp4qblgr4yow5" path="res://assets/fonts/BarlowCondensed-Italic.ttf" id="3_qtrb6"]
+[ext_resource type="FontFile" uid="uid://da6bljwea3n7u" path="res://assets/fonts/BarlowCondensed-Regular.ttf" id="4_knd86"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_icnrp"]
 bg_color = Color(0.956863, 0.768627, 0.27451, 1)
 
-[sub_resource type="SystemFont" id="SystemFont_pxgki"]
-
 [resource]
-default_font = SubResource("SystemFont_pxgki")
+default_font = ExtResource("1_fs62b")
 Panel/styles/panel = SubResource("StyleBoxFlat_icnrp")
+RichTextLabel/fonts/bold_font = ExtResource("1_fs62b")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_3an6b")
+RichTextLabel/fonts/italics_font = ExtResource("3_qtrb6")
+RichTextLabel/fonts/normal_font = ExtResource("4_knd86")

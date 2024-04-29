@@ -15,10 +15,10 @@ offset_bottom = 1378.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 941.0
-offset_top = 49.0
-offset_right = 2094.0
-offset_bottom = 374.0
+offset_left = 1116.0
+offset_top = 102.0
+offset_right = 1905.0
+offset_bottom = 427.0
 theme = SubResource("Theme_jnij0")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "How to Play"

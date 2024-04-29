@@ -23,9 +23,9 @@ theme = ExtResource("1_firu3")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 1119.0
+offset_left = 1187.0
 offset_top = 119.0
-offset_right = 1920.0
+offset_right = 1750.0
 offset_bottom = 444.0
 theme = SubResource("Theme_2y1c4")
 theme_override_colors/default_color = Color(0, 0, 0, 1)

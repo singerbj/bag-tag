@@ -17,10 +17,10 @@ offset_bottom = 1352.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 968.0
-offset_top = 238.0
-offset_right = 2092.0
-offset_bottom = 563.0
+offset_left = 1148.0
+offset_top = 218.0
+offset_right = 1886.0
+offset_bottom = 543.0
 theme = SubResource("Theme_5ghd4")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Game Over"
