@@ -94,12 +94,22 @@ position = Vector2(862, 1177)
 scale = Vector2(0.258621, 0.258621)
 texture = ExtResource("1_kgepc")
 
+[node name="LinkButton2" type="LinkButton" parent="."]
+offset_left = 1670.0
+offset_top = 1103.0
+offset_right = 2567.0
+offset_bottom = 1423.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Art Credit:   Gillian Singer"
+underline = 2
+
 [node name="LinkButton" type="LinkButton" parent="."]
 layout_mode = 0
 offset_left = 1670.0
-offset_top = 1123.0
+offset_top = 1167.0
 offset_right = 2567.0
-offset_bottom = 1443.0
+offset_bottom = 1487.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Theme Music Credit:   Bit Shift - Kevin MacLeod"
@@ -108,9 +118,9 @@ uri = "https://uppbeat.io/track/kevin-macleod/bit-shift"
 [node name="EmailButton" type="LinkButton" parent="."]
 layout_mode = 0
 offset_left = 1670.0
-offset_top = 1189.0
+offset_top = 1233.0
 offset_right = 2567.0
-offset_bottom = 1509.0
+offset_bottom = 1553.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Report an Issue"
