@@ -10,4 +10,7 @@ Controls are simple:
 - Tap to jump and swipe right to dash on mobile!
 - Use the up arrow to jump and the right arrow to dash on computer!
 
+Play the web version [here](http://www.benjaminjsinger.com/bag-tag/)!
+
 [Terms and Conditions](TERMS_AND_CONDITIONS.md)
+[Privacy Policy](PRIVACY_POLICY.md)
