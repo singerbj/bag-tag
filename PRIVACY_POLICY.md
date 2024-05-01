@@ -784,19 +784,8 @@ We may update this privacy notice from time to time. The updated version will be
 
   
 
-If you have questions or comments about this notice, you may email us at benjaminjsinger@gmail.com or contact us by post at:
+If you have questions or comments about this notice, you may email us at benjaminjsinger@gmail.com
 
-  
-
-\_\_\_\_\_\_\_\_\_\_
-
-\_\_\_\_\_\_\_\_\_\_
-
-\_\_\_\_\_\_\_\_\_\_
-
-United States
-
-  
 
 **14\. HOW CAN YOU REVIEW, UPDATE, OR DELETE THE DATA WE COLLECT FROM YOU?**
 
@@ -804,4 +793,4 @@ United States
 
 Based on the applicable laws of your country, you may have the right to request access to the personal information we collect from you, change that information, or delete it. To request to review, update, or delete your personal information, please fill out and submit a [data subject access request](https://app.termly.io/notify/69b3bf51-326c-45a8-8e0d-3d274b6b0d34).
 
-ul { list-style-type: square; } ul > li > ul { list-style-type: circle; } ul > li > ul > li > ul { list-style-type: square; } ol li { font-family: Arial ; }
+
