@@ -20,6 +20,7 @@ const MIN_GAME_OBJECT_DELETE_DISTANCE = 2000
 const RESET_POSITION_INTERVAL = 5
 const POINT_DISTANCE_BUFFER = 500
 
+var rng = RandomNumberGenerator.new()
 var last_position_reset = 0
 var last_game_object_spawn_time = 0
 var last_game_objects = []
@@ -101,25 +102,21 @@ func _physics_process(_delta: float) -> void:
 			else:
 				game_objects.remove_at(i)
 		
-func _get_random_game_object_index():
-	var rng = RandomNumberGenerator.new()
+func _get_random_number(min, max) -> float:
 	rng.randomize()
-	return rng.randi_range(0, game_object_scenes.size() - 1)
+	return rng.randi_range(min, max)
+
+func _get_random_game_object_index():
+	return _get_random_number(0, game_object_scenes.size() - 1)
 
 func _get_game_object_variation_range():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	return rng.randi_range(MIN_GAME_OBJECT_VARIATION_RANGE, MAX_GAME_OBJECT_VARIATION_RANGE)
+	return _get_random_number(MIN_GAME_OBJECT_VARIATION_RANGE, MAX_GAME_OBJECT_VARIATION_RANGE)
 	
 func _should_apply_random_rotation():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	return rng.randi_range(0, 100) > 95
+	return _get_random_number(0, 100) > 95
 
 func _get_random_force():
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	return 200 if rng.randi_range(0, 1) > 0 else -200
+	return 200 if _get_random_number(0, 1) > 0 else -200
 			
 func start_game():
 	if current_game_state == GameState.Paused:

@@ -33,6 +33,7 @@ text = "Back
 "
 
 [node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 241.0
 offset_top = 432.0
 offset_right = 2801.0
@@ -95,6 +96,7 @@ scale = Vector2(0.258621, 0.258621)
 texture = ExtResource("1_kgepc")
 
 [node name="LinkButton2" type="LinkButton" parent="."]
+layout_mode = 0
 offset_left = 1670.0
 offset_top = 1103.0
 offset_right = 2567.0

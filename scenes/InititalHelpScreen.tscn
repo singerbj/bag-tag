@@ -40,6 +40,7 @@ text = "Back
 "
 
 [node name="HelpDescriptionLabel3" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 548.0
 offset_top = 646.0
 offset_right = 3169.0
@@ -58,6 +59,7 @@ text = "[b]How to Play:[/b]
 3. Keep on going!"
 
 [node name="HelpDescriptionLabel4" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 1666.0
 offset_top = 623.0
 offset_right = 4287.0
@@ -77,6 +79,7 @@ Tap to Jump and Swipe Right to Dash
 Up Arrow to Jump and Right Arrow to Dash"
 
 [node name="HelpDescriptionLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
 offset_left = 241.0
 offset_top = 431.0
 offset_right = 2801.0
@@ -92,6 +95,7 @@ bbcode_enabled = true
 text = "It's been a long winter and you're trying to get to Florida... but Ben's throwing a tantrum, Jaggie are goofing off, Gigi's napping, Bina has to finish her chapter, and Dad's lollygagging. Hurry up and get to your gate!"
 
 [node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1758.0
 offset_top = 2132.0
 offset_right = 2039.0

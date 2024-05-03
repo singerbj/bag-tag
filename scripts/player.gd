@@ -117,6 +117,7 @@ func _smack_game_object(game_object: GameObject, wait_time: int, callback: Calla
 	timer.one_shot = true
 	timer.connect("timeout", func(): 
 		timer.get_parent().queue_free()
+		timer.queue_free()
 		callback.call()
 	)
 	timer.start()
@@ -174,5 +175,8 @@ func _show_flames():
 	add_child(timer)
 	timer.wait_time = 0.15
 	timer.one_shot = true
-	timer.connect("timeout", func(): $Fire/Flames2.visible = true)
+	timer.connect("timeout", func(): 
+		timer.queue_free()
+		$Fire/Flames2.visible = true
+	)
 	timer.start()
